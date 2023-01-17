@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      MIP | Megalith Internship Programme 2023 | The Annual Fest of Civil
+      Engineering | IIT Kharagpur
+    </title>
+    <meta
+      name="title"
+      content="Megalith Internship Program | Megalith 2023 IIT Kharagpur"
+    />
+    <meta
+      name="description"
+      content="The Annual Tech-fest of Civil Engineering Department"
+    />
+    <meta content="" name="keywords" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="megalogotheme.png" />
+    <meta http-equiv="X-UA-Compatible" content="sie-edge" />
+    <link rel="stylesheet" href="register.css" />
+    <!-- <link rel="stylesheet" href="buttons.css"> -->
+    <link rel="stylesheet" href="footer.css" />
+    <link rel="stylesheet" href="contactus.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <title>Slider Form</title>
+  </head>
+
+  <body>
+    <video id="backgroundvideo" autoplay muted loop>
+      <source src="backgroundvideregister.mp4" type="video/mp4" />
+    </video>
+
+    <nav
+      style="position: absolute"
+      class="navbar navbar-expand-custom navbar-mainbg"
+    >
+      <a class="navbar-brand navbar-logo" href="#">
+        <img style=" width: 26%; padding: 0%; margin-left: -13px; margin-top: -8px;" src="l.png" alt="logo" />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars text-white"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <div class="hori-selector">
+            <div class="left"></div>
+            <div class="right"></div>
+          </div>
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/event">Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/workshop">Workshop</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/sponsors">Sponsors</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/team">Team</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/theme">Theme</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/signup">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contactus">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- ==================================================================================== -->
+    <script>
+      let message = "<%= message %>";
+      if (message.length > 0) {
+        alert(message);
+      }
+    </script>
+
+    <div class="container" id="container">
+      <div class="overlay-container">
+        <div class="overlay">
+          <div class="overlay-panel overlay-left">
+            <h1>Welcome</h1>
+            <p>Already have an account !</p>
+            <button style="border-radius: 3vw" class="ghost" id="signIn">
+              Sign In
+            </button>
+          </div>
+          <div class="overlay-panel overlay-right">
+            <h1>Hello,Friend</h1>
+            <p>Enter your details and start journey with us</p>
+            <button style="border-radius: 3vw" class="ghost" id="signUp">
+              Sign Up
+            </button>
+          </div>
+        </div>
+      </div>
+      <br /><br />
+      <div class="form-container sign-up-container">
+        <form action="/signup" class="signupform" method="POST">
+          <h1 class="createaccount">Create Account</h1>
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            autocomplete="off"
+            required
+          />
+          <input
+            type="email"
+            class="email"
+            id="email"
+            name="username"
+            placeholder="Email"
+            required
+          />
+          <input type="text" name="password" placeholder="Password" required />
+          <input
+            type="text"
+            name="mobileNumber"
+            class="input"
+            placeholder="Mobile Number"
+            maxlength="13"
+            minlength="6"
+          />
+          <input
+            type="text"
+            name="college"
+            class="input"
+            placeholder="College "
+          />
+          <select
+            style="margin-top: 1.33vw"
+            name="country"
+            class="countries input"
+            id="countrylist"
+          >
+            <option value="" selected>Select Country</option>
+          </select>
+          <select
+            style="margin-top: 1.33vw"
+            name="state"
+            class="states input"
+            id="statelist"
+            disabled
+          >
+            <option value="" selected>Select State</option>
+          </select>
+          <select
+            style="margin-top: 1.33vw"
+            name="city"
+            class="cities input"
+            id="citylist"
+            disabled
+          >
+            <option value="" selected>Select City</option>
+          </select>
+          <select
+            style="margin-top: 1.33vw"
+            name="gender"
+            class="input"
+            placeholder="Select your Gender"
+          >
+            <option value="none" selected>Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">other</option>
+          </select>
+          <input
+            type="text"
+            name="yearOfStudy"
+            class="input"
+            placeholder="Specify your Years of Study"
+          />
+          <input
+            type="text"
+            name="partOrNot"
+            class="input"
+            placeholder="Were you a part Of Megalith? Y or N"
+          />
+          <button
+            style="border-radius: 3vw"
+            type="button"
+            id="getotp"
+            onclick="generateotp()"
+          >
+            Get OTP
+          </button>
+          <input
+            type="text"
+            id="enterotp"
+            name="otpentered"
+            class="input"
+            placeholder="Enter OTP"
+          />
+          <button style="border-radius: 3vw" type="submit" id="signupbutton">
+            Sign Up
+          </button>
+        </form>
+      </div>
+      <div class="form-container sign-in-container">
+        <form action="/login" class="signinform" method="POST">
+          <h1 class="signinoption">Sign In</h1>
+          <span>or use your account</span>
+          <input type="text" name="username" placeholder="username" />
+          <input type="password" name="password" placeholder="Password" />
+          <button style="border-radius: 3vw; font-size: 1.5rem" type="submit">
+            Sign In
+          </button>
+          <a class="forgotpassword" href="/forgot-password">Forgot Password</a>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      var email1 = "";
+      function generateotp() {
+        document.getElementById("getotp").style.display = "none";
+        document.getElementById("enterotp").style.display = "block";
+        document.getElementById("signupbutton").style.display = "block";
+        email1 = document.getElementById("email").value;
+        console.log(email1);
+        fetch("/getotp", {
+          method: "POST",
+          body: JSON.stringify({
+            test: "123",
+            email: email1,
+          }),
+          headers: {
+            "Content-type": "application/json",
+          },
+        });
+      }
+    </script>
+
+    <!-- ============================================================================================ -->
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"></script>
+    <script src="register.js"></script>
+  </body>
+</html>

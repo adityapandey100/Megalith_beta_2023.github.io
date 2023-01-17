@@ -1,0 +1,147 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+/*.header{
+	min-height: 100vh;
+	width: 100%;
+	background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url(./images/background.jpg);
+	background-position: center;
+	background-size: cover;
+	position: relative;
+}*/
+
+
+.footer-container{
+	/*max-width: 1000px;*/
+	margin: 2rem;
+	/*display: flex;*/
+}
+.footer-row{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+.footer-div{
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+}
+
+.footer{
+	background-color: black;
+	padding: 50px 0;
+}
+.footer-col{
+	margin-top: 2rem;
+	flex-wrap: wrap;
+	/*display: inline-block;*/
+	width: 95%;
+	padding: 10px 28px;
+	/*text-align: center;*/
+}
+.footer-col ul{
+	list-style: none;
+}
+.footer-col h4{
+	/*font-family: 'Karma';*/
+	font-size: 18px;
+	color: #ffffff;
+	margin-bottom: 10px; 
+	position: relative;
+}
+.footer-col h4::before{
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: 2px;
+	background-color: #e91e63;
+	height: 2px;
+	box-sizing: border-box;
+	width: 70px;
+}
+.footer-col ul li:not(:last-child){
+	margin-bottom: 10px;
+}
+.footer-col ul li a{
+	font-size: 16px;
+	/*text-transform: ;*/
+	text-decoration: none;
+	/*font-weight: 300;*/
+	color: #bbbbbb;
+	display: block;
+	transition: all 0.3s ease;
+}
+.footer-col img{
+	width: 70px;
+	padding: 10px;
+}
+
+.footer-col ul li a:hover{
+	color: #ffffff;
+	padding-left: 8px;
+}
+.footer-col .social-links{
+	display: flex;
+	flex-direction: row;
+}
+.footer-col .social-links a{
+	/*display: inline-block;*/
+	padding-top: 10px;
+	
+	font-size: 23px;
+	height: 60px;
+	width: 60px;
+	background-color: rgba(255,255,255,0.2);
+	margin:0 10px 10px 0;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 50%;
+	color: #ffffff;
+	transition: all 0.5s ease; 
+	margin: 5px;
+}
+.footer-col .social-links a:hover{
+	color: #24262b;
+	background-color: #ffffff;
+
+}
+
+.footer-col .follow{
+	display: block;
+}
+
+/*@media(max-width:  767px){
+	.footer-col{
+		width: 50%;
+		margin-bottom: 30px;
+	}
+}
+
+@media(max-width:  767px){
+	.footer-col{
+		width: 50%;
+		margin-bottom: 30px;
+	}
+}*/
+@media(max-width: 799px){
+	.footer-row{
+		flex-direction: column;
+	}
+	.contactus-wrapper{
+		width: 90vw;
+		margin: auto;
+	}
+	.footer-div{
+		flex-direction: row;
+		margin: auto;
+		width: 90vw;
+	}
+}
+
+@media(max-width:  650px){
+	.footer-div{
+		flex-direction: column;
+	}
+}

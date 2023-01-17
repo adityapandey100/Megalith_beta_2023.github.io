@@ -1,0 +1,134 @@
+@import url(https://fonts.googleapis.com/css?family=Bad+Script|Gruppo|Kumar+One+Outline|League+Script|Londrina+Outline|Monoton|Sriracha|Yellowtail&amp;text=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789?+);
+.shape {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  transform: scale(0.8);
+}
+.cir {
+  position: absolute;
+  border-radius: 50%;
+  z-index: 5;
+}
+.btn-contain {
+  width: 200px;
+  height: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 4px;
+  background: #333;
+  text-align: center;
+  z-index: 10;
+  transition: 0.2s;
+  cursor: pointer;
+  color: #fff;
+  box-shadow: 0px 1px 5px 2px #bfceef;
+  font-family: "MedievalSharp", cursive;
+}
+.btn:active,
+.btn:hover,
+.btn:focus {
+  outline: none !important;
+  color: white;
+}
+.btn-particles {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  border-radius: 50%;
+  color: #eee;
+  font-family: monospace;
+  z-index: 5;
+  /* 	filter: url(#gooeyness); */
+}
+.btn:active {
+  transform: scale(0.9) translate(-55%, -55%);
+}
+
+.music-btn {
+  font-size: 16px;
+  color: #eee;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  /* transform: translate(-50%, -50%); */
+  width: 60px;
+  padding: 15px;
+  border: none;
+  border-radius: 2px;
+  outline: none;
+  background: rgba(30, 29, 19, 0.8);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  opacity: 0.8;
+  cursor: pointer;
+  transition: all 0.4s ease-out;
+  z-index: 5;
+}
+
+.music-btn .fade:hover {
+  opacity: 0.8;
+}
+.fade {
+  opacity: 0.8;
+  top: 0;
+  left: 0;
+  transform: translate(0, 0);
+}
+.ButtonHideAfter {
+  position: absolute;
+  top: 78%;
+    left: 48%;
+    bottom: 0%;
+    font-family: "MedievalSharp", cursive;
+}
+
+x-sign {
+  font-size: 3rem;
+  --interval: 1s;
+  display: block;
+  text-shadow: 
+    0 0 10px var(--color1),
+    0 0 20px var(--color2),
+    0 0 40px var(--color3),
+    0 0 80px var(--color4);
+  will-change: filter, color;
+  filter: saturate(60%);
+  animation: flicker steps(100) var(--interval) 1s infinite;
+}
+
+
+x-sign {
+  color: lightyellow;
+  --color1: yellow;
+  --color2: black;
+  --color3: brown;
+  --color4: purple;
+  font-family: Bad Script;
+}
+@keyframes flicker {
+  50% {
+    font-size:4rem;
+    color: white;
+    filter: saturate(200%) hue-rotate(20deg);
+  }
+}
+
+@media(max-width:500px) {
+  x-sign{
+    font-size: 1.5rem;
+  }
+  @keyframes flicker{
+    50% {
+      font-size: 2rem;
+    }
+  }
+}

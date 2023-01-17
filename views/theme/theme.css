@@ -1,0 +1,209 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Caveat:wght@400;500;600;700&family=Poiret+One&display=swap");
+	
+
+* {
+	box-sizing: border-box;
+	color: white;
+	scroll-behavior: smooth;
+}
+body {
+	display: absolute;
+	height: 100vh;
+	width: 100%;
+	margin: 0;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	font-family: "Poiret One", cursive;
+}
+h1,
+h2 {
+	font-family: Arial;
+	font-weight: 900;
+}
+h3 {
+	font-size: 30px;
+	font-family: Arial Narrow;
+}
+a,
+b,
+u {
+	font-family: Arial Narrow;
+}
+header {
+	height: auto;
+	width: 100%;
+	border-radius: 0 0 72% 72% / 25%;
+	/* background-image: url("https://littleartsydreams.com/copy_metal.jpg?bypass-cache=09629320");  */
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: center;
+	text-align: center;
+	overflow: hidden;
+}
+header .overlay {
+	width: 100%;
+	padding: 3rem;
+	padding-bottom: 0;
+	font-weight: bold;
+	background-image: linear-gradient(
+		135deg,
+		rgba(100, 149, 237, 92) 10%,
+		rgba(255, 192, 203, 0.9) 100%
+	);
+}
+.overlay h1 {
+	font-family: Helvetica, sans-serif;
+	font-weight: 900;
+	letter-spacing: 0.17rem;
+	font-size: 30px;
+}
+/*header paragraph text*/
+header .overlay p {
+	padding: 1rem;
+	letter-spacing: 0.17rem;
+	font-size: 17px;
+	border-radius: 50px;
+	color: white;
+}
+.overlay button {
+	width: 100%;
+	bottom: 0;
+	padding: 1rem;
+	outline: none;
+	border: none;
+	background-color: transparent;
+}
+.overlay button a {
+	height: 100%;
+	width: 100%;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: 1rem;
+	position: relative;
+	border-radius: 50px;
+	font-size: 30px;
+	text-decoration: none;
+	letter-spacing: 0.14rem;
+	color: white;
+}
+
+/* .container{
+	display: none;
+	z-index: 10;
+	margin: 13vh;
+	overflow: hidden;
+}
+.container p{
+	font-family: Helvetica;
+	color: black;
+	font-size: 17px;
+} */
+
+.container {
+	position: absolute;
+	transform: translate(-50%, -50%);
+	width: 93%;
+	top: 55%;
+	left: 50%;
+	font-size: 1.1rem;
+	font-weight: 900;
+  }
+  .container div {
+	color: white;
+	background: rgba(255, 255, 255, 0.3);
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	backdrop-filter: blur(10px);
+	box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+	text-align: left;
+	transition: all 0.2s ease-in-out;
+  }
+  .container .main {
+	font-size: 1.1rem;
+	position: relative;
+	border-radius: 20px;
+	padding: 3em;
+	/* width: 40vw; */
+	height: auto;
+	z-index: 2;
+  }
+  .container .second {
+	position: absolute;
+	top: -2em;
+	right: -2em;
+	padding: 2em;
+	border-radius: 10px;
+	z-index: 1;
+  }
+  .container .third {
+	position: absolute;
+	bottom: -2em;
+	left: -2em;
+	padding: 2em;
+	border-radius: 10px;
+	z-index: 1;
+  }
+
+.heading{
+	z-index: 11;
+	/* transform: translate(-50%, -50%); */
+	top: 10%;
+	left: 50%;	
+}
+
+.toplef-image {
+	z-index: 10;
+	position: absolute;
+    top: -13vw;
+    left: -12vw;
+    width: 33vw;
+    height: auto;
+    margin:-3vh 0 0 -3vw;
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 9s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+
+.toprit-image{
+/*	object-fit: contain;*/
+	z-index: 10;
+	position: absolute;
+	bottom: -14vw;
+    right: -14vw;
+	width: 33vw;
+	height: auto;
+	margin:-3vh 0 0 -3vw;
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 9s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+
+#myVideo{	
+width: 100vw;
+  height: 100%;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  filter: brightness(40%);
+}
+
+.bg-video{
+	overflow: hidden;
+}
+
+iframe{
+	margin: 1vw;
+}
+

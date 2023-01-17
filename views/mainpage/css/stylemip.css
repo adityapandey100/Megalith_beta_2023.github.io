@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Cookie&family=Oleo+Script+Swash+Caps&display=swap');
+.okay {
+        font-family: 'Oleo Script Swash Caps', cursive;
+        align-items: center;   
+        display: flex;
+        justify-content: center;
+        /* min-height: 100vh; */
+        -webkit-animation: parallax 10s linear infinite;
+                animation: parallax 10s linear infinite;
+        background-image: url("images/img1.jpg");
+        -webkit-background-clip: text;
+                background-clip: text;
+        /* background-size: 600px; */
+        font-size: 127px;
+        line-height: 1.5;
+        text-align: center;
+        -webkit-text-fill-color: transparent;
+        -webkit-text-stroke: 3px #000;
+      }
+
+      .simpleokay{
+        font-family: 'Oleo Script Swash Caps', cursive;
+        align-items: center;
+            display: flex;
+            justify-content: center;
+            /* min-height: 100vh; */
+            -webkit-animation: parallax 10s linear infinite;
+            animation: parallax 10s linear infinite;
+            /* background-image: url('images/img1.jpg'); */
+            -webkit-background-clip: text;
+             background-clip: text;
+            /* background-size: 600px; */
+            font-size: 60px;
+            line-height: 1.5;
+            text-align: center;
+            margin-bottom: -25px;
+
+            /* -webkit-text-fill-color: transparent; */
+            -webkit-text-stroke: -42px #000;
+      }
+
+
+      .flexokay{
+        font-family: 'Oleo Script Swash Caps', cursive;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: left;
+        padding-left: 20px;
+        padding-bottom: 0px;
+        margin-bottom: -55px;
+      }
+
+      @media (max-width: 650px) {
+        .okay{
+                font-size: 60px;
+
+        }
+        .simpleokay{
+                font-size: 60px;
+        }
+        .flexokay{
+                margin-bottom: -35px;
+        }
+  
+        }
+
+
+        @media (max-width: 450px) {
+                .okay{
+                        font-size: 83px;
+
+                }
+                .simpleokay{
+                        font-size: 50px;
+                }
+                .flexokay{
+                        margin-bottom: -25px;
+                }
+        
+        }
+
+      

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="wsstyle.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Courgette&family=Kaushan+Script&family=Merienda:wght@600&family=Kalam&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-custom navbar-mainbg">
+      <a class="navbar-brand navbar-logo" href="#">
+        <!-- <img style="width: 12%; padding: 0%;" src="./src/images/logo52.png" alt="logo"> -->
+        <img style="    width: 27%; padding: 0%; margin-left: -33px; margin-top: -11px;" src="l.png" alt="logo" />
+      </a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars text-white"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <div class="hori-selector">
+            <div class="left"></div>
+            <div class="right"></div>
+          </div>
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/event">Events</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/workshop">Workshop</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/sponsors">Sponsors</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/team">Team</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/theme">Theme</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/signup">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contactus">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <video autoplay muted loop id="myVideo">
+      <source src="qt.mp4" type="video/mp4" />
+    </video>
+    <div class="wrapper">
+      <div class="card" onclick="window.location.href='/workshop1'">
+        <img src="tnbr4.jpg" />
+        <span
+          class="char2"
+          style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0)"
+          >G</span
+        >
+
+        <div class="descriptions">
+          <h1>STAAD.Pro Workshop & Interaction with Industry Experts</h1>
+        </div>
+      </div>
+
+      <div class="card" onclick="window.location.href='/workshop2'">
+        <img src="tnjal2.jpg" />
+        <div class="descriptions">
+          <h2>How to Register ?</h2>
+        </div>
+      </div>
+    </div>
+    <script src="navindex.js"></script>
+  </body>
+</html>
