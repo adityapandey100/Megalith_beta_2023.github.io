@@ -10,8 +10,17 @@
   .sidebar{
     z-index: 10;
     /* float: left; */
-    position: absolute;
+    margin-top: 5rem;
+    position: fixed;
   }
+
+@media(max-width: 375px) {
+    .sidebar{
+        top: 0.1rem;
+        position: absolute;
+    }
+}
+
   .sidebar li {
     width: 120px;
     padding: 7px 0px 7px 40px;
@@ -42,7 +51,7 @@
   
   
   .block {
-    height: 1em;
+    height: auto !important;
     /* line-height: 5em; */
     width: 10em;
     /* background: #464646; */

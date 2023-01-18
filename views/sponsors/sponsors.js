@@ -112,3 +112,21 @@ function display2023()  {
   sponsors2022.style.display = "none";
   sponsors2021.style.display = "none";
 }
+
+
+jQuery(window).on('scroll', function() {
+	// stop telling people to scroll when they're scrolled
+	var window_offset = jQuery(window).scrollTop() - jQuery('body').offset().top;
+  // var window_offset = document.getElementById("body").offset;
+
+	if (window_offset > 5000) {
+
+		jQuery('.scroll-indicator').addClass('off');
+
+	} else {
+
+		jQuery('.scroll-indicator').removeClass('off');
+
+	}
+
+});

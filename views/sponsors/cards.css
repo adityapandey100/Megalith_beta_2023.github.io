@@ -17,13 +17,23 @@ h1, h2, h3, h4, h5, h6{
     width:100%;
     z-index:2;
     height:80vh;
+    display:block;
+  }
+  .sub-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:center;
+    align-items: center;
+    width: 100%;
+    margin: auto;
   }
   .container .card{
     vertical-align:top;
     width:280px;
     height:380px;
     position:relative;
-    margin:30px;
+    margin:30px auto !important;
     box-shadow: 20px 20px 50px rgba(0,0,0,0.8);
     border-radius:25px;
     background-color:rgba(40, 39, 39, 0.908);
@@ -107,44 +117,321 @@ h1, h2, h3, h4, h5, h6{
 
 .spn-2021{
   display: none;
+  margin-top: 10rem;
 }
 
 .spn-2023{
   display: none;
+  margin-top: 10rem;
 }
 
-/* .spn-2022{
-  display: none;
-} */
+.spn-2022{
+  /* display: none; */
+  margin-top: 10rem;
+}
+
+@media(max-width: 375px){
+  .spn-2021{
+    margin-top: 25rem;
+  }
+  .spn-2022{
+    margin-top: 25rem;
+  }
+  .spn-2023{
+    margin-top: 25rem;
+  }
+}
+
+.wrap {
+	position: fixed;
+  z-index: 20;
+  bottom: -9rem;
+	width: 100%;
+	height: 400px;
+}
 
 
+.scroll-indicator {
+	display: block;
+	position: absolute;
+	left: 50%;
+	margin-top: -18px;
+	margin-left: -45px;
+	top: 50%;
+	width: 90px;
+  font-size: 16px;
+}
 
-.scroll-down {
-  top: 100vh;
-  /* bottom: 0; */
-  height: 100px;
-  left: 0;
-  position: absolute;
-  right: 0;
-  text-align: center;
-  z-index: 1;
+.scroll-indicator.off {
+	opacity: 0;
+	transition: 1s all;
+	-moz-animation-play-state: paused;
+	-webkit-animation-play-state: paused;
+	-ms-animation-play-state: paused;
+	animation-play-state: paused;
 }
-.scroll-down-text {
-  color: #d8d8d8;
-  font-weight: bold;
+
+.scroll-indicator a {
+	display: block;
+	height: auto;
+	width: 100%;
+	text-align: center;
+	color: #fff;
 }
-.scroll-down-bar {
-  animation: elasticus 1.2s cubic-bezier(1, 0, 0, 1) infinite;
-  background: #d8d8d8;
-  bottom: 0;
-  display: inline-block;
-  height: 65px;
-  left: 0;
-  margin: 0 auto;
-  position: absolute;
-  right: 0;
-  width: 2px;
+
+.scroll-indicator span {
+	font-size: .8em;
+	letter-spacing: .26em;
+	text-align: center;
+	display: block;
+	opacity: 1;
+	height: auto;
+	width: 100%;
+	position: absolute;
+	bottom: -20px;
+	padding-left: .26em;
+	/* accounts for trailing space letter-space*/
 }
+
+.scrolldown-btn {
+	width: 100%;
+	height: auto;
+	text-align: center;
+	padding-bottom: 14px;
+}
+
+
+/* arrow*/
+
+.scrolldown-btn::before {
+	content: '\00a0';
+	border-style: solid;
+	border-width: 3px 2.5px 0 2.5px;
+	border-color: #fff transparent transparent transparent;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+	margin-left: -1.5px;
+	-webkit-transform: scale(5);
+	-moz-transform: scale(5);
+	-ms-transform: scale(5);
+	transform-origin: scale(5);
+	animation: arrow 11s ease-in-out infinite;
+	animation-delay: 1s;
+}
+
+
+/* circle*/
+
+.scrolldown-btn::after {
+	content: "\00a0";
+	background: #fff;
+	border-radius: 50%;
+	border: 1px solid #fff;
+	display: block;
+	position: absolute;
+	z-index: 1;
+	left: 50%;
+	top: 0;
+	margin-left: -0px;
+	margin-top: -0px;
+	opacity: 0;
+	width: 0px;
+	height: 0px;
+	animation: scrollit 11s ease-in-out infinite;
+	animation-delay: 1s;
+}
+
+
+/*circle*/
+
+a.scroll-down::before {
+	content: "\00a0";
+	background: transparent;
+	border: .01px solid #fff;
+	border-radius: 50%;
+	display: block;
+	position: absolute;
+	z-index: 1;
+	left: 50%;
+	top: 0;
+	margin-left: -0px;
+	margin-top: -0px;
+	width: 0px;
+	height: 0px;
+	opacity: 0;
+	animation: scrollit3 11s ease-in-out infinite;
+	animation-delay: 1s;
+}
+
+@keyframes arrow {
+	0% {
+		-webkit-transform: scale(0);
+		-moz-transform: scale(0);
+		-ms-transform: scale(0);
+		transform: scale(0);
+		opacity: 0;
+	}
+	1% {
+		opacity: .3;
+	}
+	5% {
+		-webkit-transform: scale(10);
+		-moz-transform: scale(10);
+		-ms-transform: scale(10);
+		transform: scale(10);
+	}
+	20% {
+		transform: scale(10);
+	}
+	22% {
+		transform: scale(11);
+	}
+	24% {
+		transform: scale(10);
+		opacity: .8;
+	}
+	34% {
+		-webkit-transform: scale(10);
+		-moz-transform: scale(10);
+		-ms-transform: scale(10);
+		transform: scale(10);
+		opacity: .8;
+	}
+	40% {
+		opacity: .4;
+	}
+	42% {
+		-webkit-transform: scale(5);
+		-moz-transform: scale(5);
+		-ms-transform: scale(5);
+		transform: scale(5);
+		opacity: .3;
+	}
+	47% {
+		opacity: .1;
+	}
+	93% {
+		-webkit-transform: scale(5);
+		-moz-transform: scale(5);
+		-ms-transform: scale(5);
+		transform: scale(5);
+	}
+	100% {
+		opacity: .6;
+		-webkit-transform: scale(0);
+		-moz-transform: scale(0);
+		-ms-transform: scale(0);
+		transform: scale(0);
+	}
+}
+
+@keyframes scrollit {
+	0% {
+		opacity: 1;
+		margin-left: -0px;
+		margin-top: -0px;
+	}
+	10% {
+		width: 70px;
+		height: 70px;
+		opacity: .05;
+		margin-left: -35px;
+		margin-top: -35px;
+	}
+	14% {
+		opacity: 0;
+	}
+	16% {
+		opacity: .05;
+	}
+	20% {
+		width: 70px;
+		height: 70px;
+		opacity: .05;
+		margin-left: -35px;
+		margin-top: -35px;
+	}
+	31% {
+		opacity: .4;
+	}
+	34% {
+		width: 40px;
+		height: 40px;
+		opacity: 0;
+		margin-left: -19.5px;
+		margin-top: -19.5px;
+	}
+	40% {
+		width: 0px;
+		height: 0px;
+		margin-left: -0px;
+		margin-top: -0px;
+	}
+	49% {
+		opacity: .0;
+		margin-left: -0px;
+		margin-top: -0px;
+	}
+	100% {
+		opacity: .0;
+	}
+}
+
+@keyframes scrollit3 {
+	0% {
+		opacity: 1;
+		margin-left: -0px;
+		margin-top: -0px;
+	}
+	15% {
+		width: 90px;
+		height: 90px;
+		opacity: .05;
+		margin-left: -45px;
+		margin-top: -45px;
+	}
+	23% {
+		opacity: 0;
+	}
+	29% {
+		width: 90px;
+		height: 90px;
+		opacity: .05;
+		margin-left: -45px;
+		margin-top: -45px;
+	}
+	31% {
+		opacity: .4;
+	}
+	33% {
+		opacity: 0;
+		width: 20px;
+		height: 20px;
+		margin-left: -10px;
+		margin-top: -10px;
+	}
+	35% {
+		width: 0px;
+		height: 0px;
+		opacity: 0;
+		margin-left: -0px;
+		margin-top: -0px;
+	}
+	47% {
+		opacity: .0;
+		margin-left: -0px;
+		margin-top: -0px;
+	}
+	100% {
+		opacity: .0;
+	}
+}
+
+
 @-moz-keyframes elasticus {
   0% {
     transform: scale(1, 0);
@@ -217,3 +504,5 @@ h1, h2, h3, h4, h5, h6{
     transform-origin: 0% 100%;
   }
 }
+
+
