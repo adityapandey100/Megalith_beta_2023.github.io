@@ -51,7 +51,7 @@
 .fas{
   font-size: 25pt;
   padding-bottom: 10px;
-  color: black;
+  color: rgb(255, 255, 255);
   margin-right: 40px;
   margin-left: 40px;
 }
@@ -130,4 +130,8 @@
   display: block;
 }
 
-
+@media(max-width:500px){
+  .bg-video-wrap{
+    overflow: scroll;
+  }
+}

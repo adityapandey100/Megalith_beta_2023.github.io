@@ -37,7 +37,7 @@
       </div>
     </div>
     <div id="bg-video-div" class="bg-video-wrap" style="display: none">
-      <video id="video" src="El_lora edited.mp4" loop muted autoplay style="display: none"></video>
+      <video id="video" src="ajanta(1).mp4" loop muted autoplay style="display: none"></video>
       <nav id="navbarId" class="navbar navbar-expand-custom navbar-mainbg" style="display: none">
         <a class="navbar-brand navbar-logo" href="#">
           <img style="    width: 24.5%;
@@ -62,7 +62,7 @@
               <div class="right"></div>
             </div>
             <li class="nav-item active">
-              <a class="nav-link" data-toggle="tab" href="/"
+              <a class="nav-link"  href="/"
                 >Home</a
               >
             </li>
@@ -82,7 +82,7 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="/team" target="_blank"
+              <a class="nav-link" href="/team" target="_blank"
                 >Team</a
               >
             </li>
@@ -92,23 +92,26 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="/signup" target="_blank"
+              <a class="nav-link"  href="/signup" target="_blank"
                 >Register</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="/contactus" target="_blank"
+              <a class="nav-link" href="/contactus" target="_blank"
                 >Contact Us</a
               >
             </li>
           </ul>
         </div>
       </nav>
+      <button id="music-button" class="music-btn" style="background-color: #d6a30d; width: 65px; position: absolute; top: 90%; left: 0; height: 70px; opacity: 1;">
+        <i class="fas fa-volume-up"></i>
+      </button>
       <div class="tab-content">
         <div class="tab-pane active" id="home">
           <div id="first-heading" class="first-heading" style="display: none">
             <img class="logo-image" src="main-logo.png" alt="logo">
-            <h1 style="margin: 0% 2% 2% 2%; font-size: 3.5rem;" >Advitiya: essence of Ancient india</h1>
+            <span id="adivitya" >Advitiya: essence of Ancient india</span>
               <div class="schedule-button">
                 <button class="btn" onclick="window.location.href='/commingsoon'">Schedule</button>
                 <div class="btn-particles"></div>
@@ -117,7 +120,7 @@
                 <button class="btn" onclick="window.location.href='/signup'">Register</button>
                 <div class="btn-particles"></div>
               </div>
-            
+              
             <div class="add-on">
               <h1 style="font-size: 1.5rem;">India's Largest Civil Engineering Fest</h1>
               <h1 style="font-size: 1.5rem;">3rd - 5th March 2023</h1>
@@ -128,7 +131,8 @@
              <div class="contentaboutus">
                <h1>About Us</h1>
                <p>MEGALITH IS THE ANNUAL TECHNICAL FEST OF THE DEPARTMENT OF CIVIL ENGINEERING, INDIAN INSTITUTE OF TECHNOLOGY, KHARAGPUR HELD UNDER THE AEGIS OF THE CIVIL ENGINEERING SOCIETY, IIT KHARAGPUR AND THE PATRONAGE OF THE INSTITUTION OF CIVIL ENGINEERS (UK), IIT KHARAGPUR CHAPTER. SINCE ITS INCEPTION IN 2009, MEGALITH HAS CONQUERED A HUGE SUCCESS IN THE FIELD OF ENGINEERING AND CORPORATE SECTOR AND HAS GROWN AS LARGEST CIVIL ENGINEERING TECHNICAL FEST OF INDIA, OFFERING A DIVERSE RANGE OF COMPETITIONS, WORKSHOPS AND GUEST LECTURES.</p>
-               <iframe style="width: 326px; height: 200px;" src="https://www.youtube.com/embed/7NoZcnkLOMc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+               <!-- <iframe style="width: 326px; height: 200px;" src="https://www.youtube.com/embed/7NoZcnkLOMc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+               <iframe style="width: 326px; height: 200px;" src="https://www.youtube.com/embed/bnFE0VhbJKM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
              </div>
              <div class="honeycomb">
               <div class="gallery">
@@ -194,16 +198,13 @@
           <h1 style="position: absolute; top: 50%; left: 45%;">Contact Us</h1>
         </div>
       </div>
-      
     </div>
     <audio 
-    autoplay
-    controls
-    loop
+    id="audio" 
+    autoplay="autoplay"
+    controls="controls"
+    loop="loop"
      src="melodyloops-preview-indian-temple-2m30s.mp3"></audio>
-    <button id="music-button" class="music-btn" style="background-color: #d6a30d; width: 70px; position: absolute; top: 92%; left: 0; height: 70px; opacity: 1;">
-      <i class="fas fa-volume-up"></i>
-    </button>
     
     <script src="home.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>

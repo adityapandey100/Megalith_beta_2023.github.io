@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Caveat:wght@400;500;600;700&family=Poiret+One&display=swap");
-	
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
 
 * {
 	box-sizing: border-box;
@@ -17,7 +17,7 @@ body {
 }
 h1,
 h2 {
-	font-family: Arial;
+	font-family: 'MedievalSharp', cursive;
 	font-weight: 900;
 }
 h3 {
@@ -113,7 +113,6 @@ header .overlay p {
 	color: white;
 	background: rgba(255, 255, 255, 0.3);
 	border: 1px solid rgba(255, 255, 255, 0.3);
-	backdrop-filter: blur(10px);
 	box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
 	text-align: left;
 	transition: all 0.2s ease-in-out;

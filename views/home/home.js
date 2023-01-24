@@ -53,13 +53,13 @@ $(window).on("load", function () {
 // $("#continue-btn").click(() => {
 //   this.fadeOut(2000);
 // });
+
+//FOR AUDIO
+
 const button = document.querySelector("#music-button");
 const icon = document.querySelector("#music-button > i");
 const audio = document.querySelector("audio");
 
-$(window).on("load", function () {
-  audio.play();
-});
 button.addEventListener("click", () => {
   if (audio.paused) {
     audio.volume = 0.2;
@@ -73,34 +73,32 @@ button.addEventListener("click", () => {
   }
   button.classList.add("fade");
 });
-// const displayedDiv = document.getElementById("buttonHide");
-// const targetDiv = document.getElementById("bg-video-div");
-// const btn = document.getElementById("continue-btn");
-// btn.onclick = function () {
-//   if (targetDiv.style.display !== "none") {
-//     targetDiv.style.display = "none";
-//     displayedDiv.style.display = "block";
-//   } else {
-//     targetDiv.style.display = "block";
-//     displayedDiv.style.display = "none";
-//   }
-// };
+
+$("#continue-btn").on("click", musicPlay);
+function musicPlay() {
+  document.getElementById("audio").play();
+  document.removeEventListener("click", musicPlay);
+}
+
+//FOR TAKING CARE OF ENTRANCE AND STUFF
+
 $(document).ready(function () {
   $("#continue-btn").on("click", function () {
     if ($("#bg-video-div").css("display") !== "none") {
       $("#bg-video-div").fadeOut();
       $("#buttonHide").fadeIn();
+      $("#music-button").fadeOut();
     } else {
       $("#bg-video-div").fadeIn(4000);
       $("#buttonHide").fadeOut();
+      $("#music-button").delay(10000).fadeIn(1000);
       if ($("#video").css("display") === "none") {
-        // $("#video").addClass('display-b')
         $("#video").fadeIn();
         $("#navbarId").delay(10000).fadeIn(1000);
-        $("#about-monument").delay(10000).fadeIn(1000);
-        $("#bell-container").delay(10000).fadeIn(1000);
-        $("#first-heading").delay(14000).fadeIn(1000);
-        $("#buttonHideAfter").delay(15000).fadeIn(1500);
+        $("#about-monument").delay(6000).fadeIn(800);
+        $("#bell-container").delay(6000).fadeIn(800);
+        $("#first-heading").delay(10000).fadeIn(800);
+        $("#buttonHideAfter").delay(11000).fadeIn(1100);
       }
     }
   });
@@ -109,7 +107,7 @@ var playPause = document.getElementById("continue-btn-after");
 var video = document.getElementById("video");
 var playOnce = true;
 video.addEventListener("timeupdate", function () {
-  if (video.currentTime >= 16 && playOnce === true) {
+  if (video.currentTime >= 11.5 && playOnce === true) {
     video.pause();
     playOnce = false;
   }
@@ -119,17 +117,17 @@ playPause.addEventListener("click", function () {
   let forFirstHeading = true;
   if (video.paused === true && forFirstHeading === true) {
     video.play();
-    $("#buttonHideAfter").fadeOut(2000);
+    $("#buttonHideAfter").fadeOut(500);
     $("#first-heading").removeClass("display-b").addClass("display-n fadeOut");
     forFirstHeading = false;
   }
   var toActivateSecondHeading = true;
   if (toActivateSecondHeading === true) {
-    $("#second-heading").delay(10000).fadeIn(5000);
-    $("#buttonHideAfter").delay(12000).fadeIn(1500);
+    $("#second-heading").delay(10000).fadeIn(1000);
+    // $("#buttonHideAfter").delay(12000).fadeIn(1500);
     setTimeout(function () {
       video.pause();
-    }, 15000);
+    }, 10000);
     var forSecondHeading = true;
     playPause.addEventListener("click", function () {
       if (video.paused === true && forSecondHeading === true) {

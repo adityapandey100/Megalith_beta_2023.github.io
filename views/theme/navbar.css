@@ -1,4 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
 .navbar {
+	font-family: 'MedievalSharp', cursive;
 	z-index: 11;
 	position: absolute;
 	top: 0;
@@ -16,6 +18,8 @@
 	padding: 0px;
   }
   #navbarSupportedContent {
+	font-family: 'MedievalSharp', cursive;
+
 	overflow: hidden;
 	position: relative;
   }
@@ -31,6 +35,7 @@
 	float: left;
   }
   #navbarSupportedContent ul li a {
+	font-family: 'MedievalSharp', cursive;
 	color: rgba(255, 255, 255, 0.8);
 	text-decoration: none;
 	font-size: 15px;

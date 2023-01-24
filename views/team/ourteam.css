@@ -13,6 +13,7 @@ body {
     background-image: url(pexels-francesco-ungaro-206066.jpg);
     background-size: cover;
     background-position: center;
+    overflow: hidden;
 }
 nav{
   top: 0%;
@@ -24,6 +25,13 @@ nav{
   top: 0;
   left: 0;
   right: 0;
+}
+
+#backgroundvideo{
+  position: fixed;
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
 }
 /*----------bootstrap-navbar-css------------*/
 .navbar-logo {
@@ -50,6 +58,7 @@ nav{
   float: left;
 }
 #navbarSupportedContent ul li a {
+	font-family: 'MedievalSharp', cursive;
   color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   font-size: 15px;
@@ -195,6 +204,7 @@ nav{
 .teamcontainer{
   background-image: url(Untitled-design.png);
   background-size: cover;
+  scroll-behavior: smooth;
   position: absolute;
   top: 20vh;
   height: 70vh;
@@ -213,6 +223,7 @@ nav{
 }
 .teamcontainer::-webkit-scrollbar{
   display: none;
+  scroll-behavior: smooth;
 }
 .ourteam{
   position: absolute;
@@ -235,12 +246,12 @@ nav{
 .leftalign{
   display:flex ;
   flex-direction: column;
-  margin-right: 4%;
+  margin-left: 4%;
 }
 .rightalign{
   display:flex ;
   flex-direction: column;
-  margin-left: 4%;
+  margin-right: 4%;
 }
 .contentname{
   display: flex;
@@ -250,6 +261,25 @@ nav{
   margin-top: 58px;
   font-size: 2rem;
   color: white;
+  text-align: center;
+}
+.cth{
+  display: flex;
+  justify-content: center;
+  font-family: 'MedievalSharp', cursive;
+  font-weight: 400;
+  font-size: 1rem;
+  color: white;
+  text-align: center;
+}
+.ctm{
+  display: flex;
+  justify-content: center;
+  font-family: 'MedievalSharp', cursive;
+  font-weight: 400;
+  font-size: 1rem;
+  color: white;
+  text-align: center;
 }
 button i{
     cursor: pointer;
@@ -267,7 +297,8 @@ body{
   display: grid;
   place-items: center ;
   overflow: hidden;
-  margin-top: 13px;
+  margin-top: 27px;
+  margin-bottom: 56px;
 }
 
 .slide{
@@ -291,7 +322,6 @@ img{
   content: '';
   height: 100%;
   position: absolute;
-  width: 15%;
   z-index: 2;
 }
 .slider::before{
@@ -315,7 +345,7 @@ img{
   font-size: 25px;
   color:#fff;
  display: block;
-  background-color: rgba(188, 143, 143, 0.137);
+  background-color: rgba(12, 12, 12, 0.477);
   z-index: 1;
   display:flex;
   justify-content: center;
@@ -333,13 +363,13 @@ img{
   position: absolute;
   top: 0;
   left:0;
-  content: "yeah!";
+  content: "Yeah!";
   text-align: center;
   transform:translateY(100%);
   font-size: 25px;
   color:#fff;
  display: block;
-  background-color: rgba(188, 143, 143, 0.137);
+  background-color: rgba(12, 12, 12, 0.477);
   z-index: 1;
   display:flex;
   justify-content: center;
@@ -379,31 +409,7 @@ transform: translateY(0%);
 
 @keyframes scrollcb{
   0%{
-    transform: translateX(calc(-29vh*6));
-  }
-  100%{
-    transform: translateX(0);
-  }
-}
-.slide-trackct{
-  animation: scrollct 15s linear infinite;
-}
-
-@keyframes scrollct{
-  0%{
-    transform: translateX(0);
-  }
-  100%{
-    transform: translateX(calc(-29vh*6));
-  }
-}
-.slide-trackcb{
-  animation: scrollcb 15s linear infinite;
-}
-
-@keyframes scrollcb{
-  0%{
-    transform: translateX(calc(-29vh*6));
+    transform: translateX(calc(-29vh*5));
   }
   100%{
     transform: translateX(0);
@@ -421,24 +427,48 @@ transform: translateY(0%);
     transform: translateX(calc(-29vh*5));
   }
 }
-.slide-trackwb{
-  animation: scrollwb 15s linear infinite;
+
+.disablewb{
+  display: none;
+}
+.disablepb{
+  display: none;
+}
+@media(max-width:192vh){
+  .disablewb{
+    display: block;
+  }
+  .slide-trackwb{
+    animation: scrollwb 15s linear infinite;
+  }
+  
+  @keyframes scrollwb{
+    0%{
+      transform: translateX(calc(-29vh*4));
+    }
+    100%{
+      transform: translateX(0);
+    }
+  }
+  .disablepb{
+    display: block;
+  }
+  .slide-trackpb{
+    animation: scrollpb 15s linear infinite;
+  }
+  
+  @keyframes scrollpb{
+    0%{
+      transform: translateX(calc(-29vh*4));
+    }
+    100%{
+      transform: translateX(0);
+    }
+  }
 }
 
-@keyframes scrollwb{
-  0%{
-    transform: translateX(calc(-29vh*5));
-  }
-  100%{
-    transform: translateX(0);
-  }
-}
 .designm{
   background-size: cover;
-}
-.slider::before,
-.slider::after{
-  width: 0%;
 }
 .disabledt{
   display: none;
@@ -446,14 +476,10 @@ transform: translateY(0%);
 .visibledt{
   margin: 0 6vh;
 }
-@media(max-width : 1300px){
+@media(max-width : 160vh){
   .visibledt{
     margin: 0 4vh;
   }
- .slider::before,
- .slider::after{
-  width: 15%;
-}
   .disabledt{
     display: block;
   }
@@ -483,32 +509,86 @@ transform: translateY(0%);
   }
 }
 
-.slide-trackpt{
-  animation: scrollpt 15s linear infinite;
+.disablpt{
+  display: none;
 }
 
-@keyframes scrollpt{
-  0%{
-    transform: translateX(0);
+@media (max-width:148vh){
+  .slide-trackpt{
+    animation: scrollpt 15s linear infinite;
   }
-  100%{
-    transform: translateX(calc(-29vh*4));
+  
+  @keyframes scrollpt{
+    0%{
+      transform: translateX(0);
+    }
+    100%{
+      transform: translateX(calc(-29vh*3));
+    }
   }
-}
-.slide-trackpb{
-  animation: scrollpb 15s linear infinite;
-}
-
-@keyframes scrollpb{
-  0%{
-    transform: translateX(calc(-29vh*4));
-  }
-  100%{
-    transform: translateX(0);
+  .disablept{
+    display: block;   
   }
 }
 
+.disableet{
+  display: none;
+}
 
+@media(max-width:150vh){
+  .disableet{
+    display: block;
+  }
+  .slide-tracket{
+    animation: scrollet 15s linear infinite;
+  }
+  
+  @keyframes scrollet{
+    0%{
+      transform: translateX(0);
+    }
+    100%{
+      transform: translateX(calc(-29vh*3));
+    }
+  }
+}
+
+.disablelt{
+  display: none;
+}
+
+@media (max-width:100vh){
+  .slide-tracklt{
+    animation: scrollpt 15s linear infinite;
+  }
+  
+  @keyframes scrolllt{
+    0%{
+      transform: translateX(0);
+    }
+    100%{
+      transform: translateX(calc(-29vh*2));
+    }
+  }
+  .disablelt{
+    display: block;   
+  }
+  .slide-trackeb{
+    animation: scrolleb 15s linear infinite;
+  }
+  
+  @keyframes scrolleb{
+    0%{
+      transform: translateX(calc(-29vh*2));
+    }
+    100%{
+      transform: translateX(0);
+    }
+  }
+  .disableeb{
+    display: block;   
+  }
+}
 /* Name on photo  */
 
 .DKbaidya:before{
@@ -516,4 +596,292 @@ transform: translateY(0%);
 }
 .DKbaidya:after{
   content:"Prof. D K Baidya";
+}
+.aniruddhasengupta:before{
+  content:"Prof. Aniruddha Sengupta";
+}
+.aniruddhasengupta:after{
+  content:"Prof. Aniruddha Sengupta";
+}
+.mihirk:before{
+  content:"Mihir Kumar Choudhury";
+}
+.mihirk:after{
+  content:"Mihir Kumar Choudhury";
+}
+.name1:before{
+  content:"Mahendra Bera";
+}
+.name1:after{
+  content:"Mahendra Bera";
+}
+.name2:before{
+  content:"Ashutosh Garg";
+}
+.name2:after{
+  content:"Ashutosh Garg";
+}
+.name3:before{
+  content:"Ashok Jangid";
+}
+.name3:after{
+  content:"Ashok Jangid";
+}
+.name4:before{
+  content:"Ashish Pratap Singh";
+}
+.name4:after{
+  content:"Ashish Pratap Singh";
+}
+.name5:before{
+  content:"Anurag Bharti";
+}
+.name5:after{
+  content:"Anurag Bharti";
+}
+.name6:before{
+  content:"Rakshit Yadav";
+}
+.name6:after{
+  content:"Rakshit Yadav";
+}
+.name7:before{
+  content:"Anant Pandey";
+}
+.name7:after{
+  content:"Anant Pandey";
+}
+.name8:before{
+  content:"Satyaki Biswas";
+}
+.name8:after{
+  content:"Satyaki Biswas";
+}
+.name9:before{
+  content:"Anshuman Raj";
+}
+.name9:after{
+  content:"Anshuman Raj";
+}
+.name10:before{
+  content:"Praujjawal Prabhakar";
+}
+.name10:after{
+  content:"Praujjawal Prabhakar";
+}
+.name11:before{
+  content:"Nishant Bhagat";
+}
+.name11:after{
+  content:"Nishant Bhagat";
+}
+.name12:before{
+  content:"Ayan AKhtar";
+}
+.name12:after{
+  content:"Ayan AKhtar";
+}
+.name13:before{
+  content:"Mohd. Armugan Sarwar";
+}
+.name13:after{
+  content:"Mohd. Armugan Sarwar";
+}
+.name14:before{
+  content:"Bhagyashree Sharma";
+}
+.name14:after{
+  content:"Bhagyashree Sharma";
+}
+.name15:before{
+  content:"Ishwar Kashyap";
+}
+.name15:after{
+  content:"Ishwar Kashyap";
+}
+.name16:before{
+  content:"Pratush Tiwari";
+}
+.name16:after{
+  content:"Pratush Tiwari";
+}
+.name17:before{
+  content:"Ravi Kumar";
+}
+.name17:after{
+  content:"Ravi Kumar";
+}
+.name18:before{
+  content:"Utkarsh Gupta";
+}
+.name18:after{
+  content:"Utkarsh Gupta";
+}
+.name19:after{
+  content:"Aditya Pandey";
+}
+.name19:before{
+  content:"Aditya Pandey";
+}
+.name20:after{
+  content:"Abhijeet Nigam";
+}
+.name20:before{
+  content:"Abhijeet Nigam";
+}.name21:after{
+  content:"Rounak Das";
+}
+.name21:before{
+  content:"Rounak Das";
+}.name22:after{
+  content:"Yellanki Sai Likitha";
+}
+.name22:before{
+  content:"Yellanki Sai Likitha";
+}.name23:after{
+  content:"Aayushi Priya";
+}
+.name23:before{
+  content:"Aayushi Priya";
+}.name24:after{
+  content:"Nadimpalli Deepthi";
+}
+.name24:before{
+  content:"Nadimpalli Deepthi";
+}.name25:after{
+  content:"Kunal Kumar";
+}
+.name25:before{
+  content:"Kunal Kumar";
+}.name26:after{
+  content:"Naman Shankar";
+}
+.name26:before{
+  content:"Naman Shankar";
+}.name27:after{
+  content:"Piyush Yadav";
+}
+.name27:before{
+  content:"Piyush Yadav";
+}.name28:after{
+  content:"N Rachana Gupta";
+}
+.name28:before{
+  content:"N Rachana Gupta";
+}.name29:after{
+  content:"Debabrata Sarkar";
+}
+.name29:before{
+  content:"Debabrata Sarkar";
+}.name30:after{
+  content:"Kaushikee Biswas";
+}
+.name30:before{
+  content:"Kaushikee Biswas";
+}.name31:after{
+  content:"Sonu Kumar Rai";
+}
+.name31:before{
+  content:"Sonu Kumar Rai";
+}.name32:after{
+  content:"Aditya Chakravorty";
+}
+.name32:before{
+  content:"Aditya Chakravorty";
+}.name33:after{
+  content:"Challa Naga Sujan";
+}
+.name33:before{
+  content:"Challa Naga Sujan";
+}.name34:after{
+  content:"Palligiri Meghna";
+}
+.name34:before{
+  content:"Palligiri Meghna";
+}.name35:after{
+  content:"Shivangi Singh";
+}
+.name35:before{
+  content:"Shivangi Singh";
+}.name36:after{
+  content:"Sai Teja Anantha";
+}
+.name36:before{
+  content:"Sai Teja Anantha";
+}.name37:after{
+  content:"Mohammad Shoaib";
+}
+.name37:before{
+  content:"Mohammad Shoaib";
+}.name38:after{
+  content:"Vivek Agarwal";
+}
+.name38:before{
+  content:"Vivek Agarwal";
+}.name39:after{
+  content:"Islavath Mohan Naik";
+}
+.name39:before{
+  content:"Islavath Mohan Naik";
+}.name40:after{
+  content:"Aditya Sharma";
+}
+.name40:before{
+  content:"Aditya Sharma";
+}.name41:after{
+  content:"Vaishnavi Pandey";
+}
+.name41:before{
+  content:"Vaishnavi Pandey";
+}
+.name42:after{
+  content:"Jay Nagwani";
+}
+.name42:before{
+  content:"Jay Nagwani";
+}.name43:after{
+  content:"Lilesh Bhuskute";
+}
+.name43:before{
+  content:"Lilesh Bhuskute";
+}.name44:after{
+  content:"Sheetanshu Shekhar";
+}
+.name44:before{
+  content:"Sheetanshu Shekhar";
+}.name45:after{
+  content:"Jahnavi Poloju";
+}
+.name45:before{
+  content:"Jahnavi Poloju";
+}.name46:after{
+  content:"Harsh Kumar";
+}
+.name46:before{
+  content:"Harsh Kumar";
+}.name47:after{
+  content:"Pooja Saini";
+}
+.name47:before{
+  content:"Pooja Saini";
+}.name48:after{
+  content:"Aman Sagar";
+}
+.name48:before{
+  content:"Aman Sagar";
+}.name49:after{
+  content:"Arunendra Pratap Singh";
+}
+.name49:before{
+  content:"Arunendra Pratap Singh";
+}.name50:after{
+  content:"Anjana Jawahar";
+}
+.name50:before{
+  content:"Anjana Jawahar";
+}.name51:after{
+  content:"Sanyam Jhuria";
+}
+.name51:before{
+  content:"Sanyam Jhuria";
 }
