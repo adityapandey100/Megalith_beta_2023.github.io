@@ -203,6 +203,26 @@ width: 100vw;
 }
 
 iframe{
-	margin: 1vw;
+	width: 22vw;
+	 height: 29vh;
 }
 
+@media(max-width:500px){
+	body{
+		overflow-y: scroll;
+	}
+	.container .main{
+		padding: 1em;
+	}
+	iframe{
+		width: 79vw;
+	}
+	.container{
+		margin-top: 361px;
+	}
+}
+@media(max-width:400px){
+	.container{
+		margin-top: 441px;
+	}
+}

@@ -91,7 +91,7 @@ $(document).ready(function () {
     } else {
       $("#bg-video-div").fadeIn(4000);
       $("#buttonHide").fadeOut();
-      $("#music-button").delay(10000).fadeIn(1000);
+      $("#music-button").delay(10).fadeIn(10);
       if ($("#video").css("display") === "none") {
         $("#video").fadeIn();
         $("#navbarId").delay(10000).fadeIn(1000);

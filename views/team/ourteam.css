@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+/* font-family: 'MedievalSharp', cursive; */
 html,
 body {
     margin: 0;
@@ -202,7 +203,7 @@ nav{
   }
 }
 .teamcontainer{
-  background-image: url(Untitled-design.png);
+  background-image: url(Untitled-design.jpg);
   background-size: cover;
   scroll-behavior: smooth;
   position: absolute;
