@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap");
 :root {
   cursor: crosshair;
   --cursorX: 50vw;
@@ -10,6 +10,12 @@
 }
 .music-btn i {
   margin-left: 0;
+}
+@media (max-width: 500px) {
+  .music-btn i {
+    font-size: 14pt;
+    margin-left: 0;
+  }
 }
 .fa-volume-up {
   margin-left: 0;
@@ -308,7 +314,7 @@ i {
   float: left;
 }
 #navbarSupportedContent ul li a {
-  font-family: 'MedievalSharp', cursive;
+  font-family: "MedievalSharp", cursive;
   color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   font-size: 15px;
@@ -631,5 +637,15 @@ i {
 @media (max-width: 500px) {
   #adivitya {
     font-size: 2.5rem;
+  }
+  .about-monument {
+    width: auto;
+    height: auto;
+    position: absolute;
+    bottom: 2%;
+    right: -31rem;
+  }
+  .about-monument img {
+    width: 25%;
   }
 }
