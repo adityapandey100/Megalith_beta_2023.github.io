@@ -10,7 +10,7 @@ body {
   height: 100%;
 }
 .userinfo{
-  font-size: 1.4vw;
+  font-size: 17px;
 }
 body {
   font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -151,6 +151,9 @@ body {
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
+}
+p{
+  margin: 4px 0 0;
 }
 /* H1 - H6 font */
 h1,

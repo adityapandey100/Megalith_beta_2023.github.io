@@ -159,3 +159,15 @@ function test() {
     // Add active class to target link
     target.parent().addClass("active");
   });
+
+
+  var mipid = document.getElementById('mipid')
+
+  function activemipidc() {
+    mipid.required=true;
+    mipid.style.display="block"
+  }
+  function deactivemipidc(){
+    mipid.required=false
+    mipid.style.display="none"
+  }

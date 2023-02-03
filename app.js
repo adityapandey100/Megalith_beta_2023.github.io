@@ -107,7 +107,7 @@ const userSchema = new mongoose.Schema({
         type: Number,
         trim: true
     },
-    partOrNot: {
+    mipid : {
         type: String,
         required: true,
         trim: true
@@ -385,7 +385,7 @@ app.post('/getotp', function(req,res){
         // text: "Hello world?", // plain text body
         text: "Hey here is new quert for you..",
         html: `<h3>Welcome to our website</h3>
-            <p> OTP for conformation of email is as follows. </p>
+            <p> OTP for confirmation of email is as follows. </p>
             <P>OTP : ${generatedOTP}</P>
             <p>Regards,</p>
             <p>Team Megalith</p>`
@@ -416,11 +416,18 @@ app.post("/signup", function (req, res) {
     let state = req.body.state;
     let city = req.body.city;
     let gender = req.body.gender;
+    let havemipid = req.body.havemipid;
     let yearsOfStudy = req.body.yearsOfStudy;
-    let partOrNot = req.body.partOrNot;
     let enteredOTP = req.body.otpentered;
+    let mipid = req.body.mipid;
+    console.log(req.body.otpentered)
+    console.log(havemipid);
+    if(havemipid == 'No'){
+        mipid = 'No';
+    }
     console.log(generatedOTP);
-    if(generatedOTP==enteredOTP){
+    console.log(enteredOTP);
+    if(generatedOTP == enteredOTP){
         User.register({
             username,
             name,
@@ -431,7 +438,7 @@ app.post("/signup", function (req, res) {
             city,
             gender,
             yearsOfStudy,
-            partOrNot
+            mipid
         },
         password,
             function (err, user) {
@@ -443,6 +450,7 @@ app.post("/signup", function (req, res) {
                 console.log("User registered successfully");
                 passport.authenticate("local")(
                 req, res, function () {
+                    console.log("")
                     if(req.isAuthenticated(req, res)) {
                         res.redirect('/secret/'+req.user.id);}
                     });

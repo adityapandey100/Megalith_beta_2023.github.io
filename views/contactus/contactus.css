@@ -1,17 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");s
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap");
 *{
   margin: 0;
   padding: 0;
   outline: none;
   box-sizing: border-box;
   text-decoration: none;
-  font-family: 'Poppins', sans-serif;
+  font-family: "MedievalSharp", cursive;
 }
 .contactus-wrapper{
   width: 90%;
   justify-content: center;
   display: flex;
+  
   align-items: center;
 }
 
@@ -101,7 +102,7 @@
   color: #fff;
 }
 
-@media screen and (max-width: 420px){
+@media screen and (max-width: 490px){
   .container .contactus h1{
     padding-top: 0%;
   }
@@ -112,6 +113,10 @@
     width: 100%;
     margin-bottom: 15px;
   }
+  .contactus-wrapper{
+    flex-wrap: wrap;
+  }
+
 }
 
 /*@media (min-width:  1290px){
@@ -127,7 +132,4 @@
   .footer-col{
     display: block;
   }
-}
-.emailtext{
-
 }

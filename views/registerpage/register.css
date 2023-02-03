@@ -571,12 +571,44 @@ button.ghost {
   }
 }
 
-@media (max-width: 450px) {
+.radiobutton{
+  font-size: 1.3vw;
+}
+.reference{
+  font-size: 1.2vw;
+  color: antiquewhite;
+  margin-top: 19px;
+}
+.buttonmipid{
+  display: flex;
+  flex-direction: row;
+  margin-left: 2vw;
+}
+.labelyes{
+  margin-right:4.7vw;
+}
+.buttonmipid{
+  margin-top: 14px;
+  display: flex;
+  flex-direction: row;
+  margin-left: 0vw;
+}
+@media (max-width: 500px) {
   .container {
     min-height: 720px;
     width: 76%;
     overflow: hidden;
     margin-top: 200px;
+  }
+  .buttonmipid{
+    margin-left: 0vw;
+  }
+  .radiobutton{
+    font-size: 3.3vw;
+    margin-top: 5px;
+  }
+  .labelyes{
+    margin-right: 9.7vw;
   }
   /* .sign-up-container{
 
@@ -635,6 +667,9 @@ button.ghost {
     width: 47vw;
     font-size: 3.4vw;
   }
+  .reference{
+    font-size: 3.4vw;
+  }
   select {
     border-radius: 4vw;
     font-size: 2.7vw;
@@ -643,6 +678,9 @@ button.ghost {
   }
   .right-panel-active .sign-up-container form {
     min-height: 55%;
+  }
+  input[type="radio"]{
+    width: 17px;
   }
   button {
     width: 18vw;
@@ -704,4 +742,8 @@ button.ghost {
 }
 #enterotp {
   display: none;
+}
+
+label{
+  color: white;
 }
