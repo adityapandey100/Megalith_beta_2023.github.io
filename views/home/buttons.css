@@ -83,15 +83,40 @@
     left: 0;
     height: 50px;
     opacity: 1;
+    font-size: 16px;
+  color: #eee;
+  padding: 15px;
+  border: none;
+  border-radius: 2px;
+  outline: none;
+  background: rgba(30, 29, 19, 0.8);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  opacity: 0.8;
+  cursor: pointer;
+  transition: all 0.4s ease-out;
+  z-index: 5;
+  background-color: #d6a30d;
+  
   }
 }
-
+.music-btn i {
+  margin-left: 0;
+}
+@media (max-width: 500px) {
+  .music-btn i {
+    font-size: 14pt;
+    margin-left: 0;
+  }
+}
+.fa-volume-up {
+  margin-left: 0;
+}
 .music-btn .fade:hover {
   opacity: 0.8;
 }
 .fade {
   opacity: 0.8;
-  top: 0;
+  top: 91%;
   left: 0;
   transform: translate(0, 0);
 }

@@ -127,8 +127,21 @@
 }
 
 @media (max-width: 500px) {
-  .bg-video-wrap {
+  #second-heading {
+    height: 86vh;
+    overflow: hidden;
     overflow-y: scroll;
     overflow-x: hidden;
+    -ms-overflow-style: none;
+  scrollbar-width: none;
+  }
+  #second-heading::-webkit-scrollbar {
+    display: none;
+  }
+}
+@media(max-width: 400px){
+  .bell-container{
+    bottom: 7%;
+    right: -1rem;
   }
 }

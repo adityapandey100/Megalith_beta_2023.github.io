@@ -19,11 +19,11 @@
   }
   #navbarSupportedContent {
 	font-family: 'MedievalSharp', cursive;
-
 	overflow: hidden;
 	position: relative;
   }
   #navbarSupportedContent ul {
+	text-align: left;
 	padding: 0px;
 	margin: 0px;
   }

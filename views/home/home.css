@@ -8,18 +8,7 @@
   --animationDuration: 10s;
   --animationDelay: 15s;
 }
-.music-btn i {
-  margin-left: 0;
-}
-@media (max-width: 500px) {
-  .music-btn i {
-    font-size: 14pt;
-    margin-left: 0;
-  }
-}
-.fa-volume-up {
-  margin-left: 0;
-}
+
 :root:before {
   content: "";
   position: fixed;

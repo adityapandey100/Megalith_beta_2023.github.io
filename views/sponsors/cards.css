@@ -145,9 +145,12 @@ h1, h2, h3, h4, h5, h6{
 .wrap {
 	position: fixed;
   z-index: 20;
-  bottom: -9rem;
-	width: 100%;
-	height: 400px;
+  width: 30%;
+  top: 91%;
+  left: 36%;
+	width: 30%;
+	height: 2px;
+	
 }
 
 
