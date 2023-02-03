@@ -356,19 +356,6 @@ button span {
   position: relative;
   pointer-events: none;
 }
-button::before {
-  --size: 0;
-  content: '';
-  position: absolute;
-  left: var(--x);
-  top: var(--y);
-  width: var(--size);
-  height: var(--size);
-  background: radial-gradient(circle closest-side, #4405f7, transparent);
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  transition: width .2s ease, height .2s ease;
-}
 button:hover::before {
   --size: 400px;
 }
@@ -505,7 +492,6 @@ button.ghost {
 @media (max-width: 450px){
     .container{
         min-height: 51vh;
-        margin-top: 106vh;
         width: 76%;
         overflow: hidden;
     }
@@ -623,7 +609,6 @@ button.ghost {
 }
 @media(max-width: 376px){
     .container{
-      margin-top: 154vh;
       min-height: 46vh;
     }
     .sign-up-container{
