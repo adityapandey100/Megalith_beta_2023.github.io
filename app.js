@@ -576,7 +576,7 @@ app.post('/forgot-password', (req, res, next) => {
                 id: ID
             }
             const token = jwt.sign(payload, secret, { expiresIn: '15m' })
-            const link = `http://localhost:3000/reset-password/${ID}/${token}`
+            const link = `https://2023.megalith.co.in/reset-password/${ID}/${token}`
             console.log(link);
             const transporter = nodemailer.createTransport({
                   host: "smtp.gmail.com",
