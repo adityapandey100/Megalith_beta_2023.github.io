@@ -141,7 +141,16 @@
 }
 @media(max-width: 400px){
   .bell-container{
-    bottom: 7%;
+    bottom: 1%;
     right: -1rem;
+  }
+}
+#secondheadingconten{
+  display: flex;
+  flex-direction: row;
+}
+@media(max-width:500){
+  #secondheadingconten{
+    flex-direction: column;
   }
 }

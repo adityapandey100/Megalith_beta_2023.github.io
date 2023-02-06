@@ -181,8 +181,6 @@ audio {
   top: 15%;
   width: 80%;
   left: 10%;
-  display: flex;
-  flex-direction: row;
   /* left: 30%;
   right: 30%; */
   font-family: "MedievalSharp", cursive;
@@ -460,7 +458,7 @@ i {
 .bell-container {
   display: block;
   position: absolute;
-  bottom: 10%;
+  bottom: 2%;
   right: 1rem;
 }
 
@@ -636,5 +634,15 @@ i {
   }
   .about-monument img {
     width: 25%;
+  }
+}
+
+#secondheadingconten{
+  display: flex;
+  flex-direction: row;
+}
+@media(max-width:500){
+  #secondheadingconten{
+    flex-direction: column;
   }
 }

@@ -17,7 +17,7 @@ const newOTP = require('otp-generator');
 var flash = require('connect-flash');
 const { request } = require('http');
 const { response } = require('express');
-const { trim } = require('lodash');
+const { trim, result, update } = require('lodash');
 const { StringDecoder } = require('string_decoder');
 const { stringify } = require('querystring');
 var generatedOTP;
@@ -107,7 +107,7 @@ const userSchema = new mongoose.Schema({
         type: Number,
         trim: true
     },
-    mipid : {
+    getmipid : {
         type: String,
         required: true,
         trim: true
@@ -166,11 +166,27 @@ const registerworkshopSchema=new mongoose.Schema({
 });
 
 const registerworkshop = mongoose.model("registerworkshop", registerworkshopSchema);
+
+const MIP_IDSchema = new mongoose.Schema({
+    mipid :{
+        type:String,
+        required:true,
+        trim:true
+    },
+    no_of_participant :{
+        type: Number,
+        required:true,
+        trim:true
+
+    },
+})
+const MIP_ID = mongoose.model("MIP_ID", MIP_IDSchema)
 //=====================
 // ROUTES
 //=====================
 
 // Showing home page
+app.use('/', express.static(path.join(__dirname, '/views/video/ajanta')));
 app.use('/', express.static(path.join(__dirname, '/views/home')));
 app.get("/", function (req, res) {
     res.render("home");
@@ -184,7 +200,7 @@ app.get("/commingsoon", function (req, res) {
 });
 
 // Events pages 
-
+app.use('/event', express.static(path.join(__dirname, '/views/video/qutub')));
 app.use('/event', express.static(path.join(__dirname, '/views/events')));
 app.get("/event", function (req, res) {
     res.render("event");
@@ -247,7 +263,7 @@ app.get("/event/darkcode", function (req, res) {
 
 
 // Workshop page
-
+app.use('/workshop', express.static(path.join(__dirname, '/views/video/qutub')));
 app.use('/workshop', express.static(path.join(__dirname, '/views/workshop')));
 app.get("/workshop", function (req, res) {
     res.render("workshop");
@@ -264,21 +280,21 @@ app.get("/workshop2", function (req, res) {
 });
 
 //Sponsors page
-
+app.use('/sponsors', express.static(path.join(__dirname, '/views/video/konark')));
 app.use('/sponsors', express.static(path.join(__dirname, '/views/sponsors')));
 app.get("/sponsors", function (req, res) {
     res.render("sponsors");
 });
 
 //our team
-
+app.use('/team', express.static(path.join(__dirname, '/views/video/tajmahal')));
 app.use('/team', express.static(path.join(__dirname, '/views/team')));
 app.get("/team", function (req, res) {
     res.render("team");
 });
 
 //theme page
-
+app.use('/theme', express.static(path.join(__dirname, '/views/video/konark')));
 app.use('/theme', express.static(path.join(__dirname, '/views/theme')));
 app.get("/theme", function (req, res) {
     res.render("theme");
@@ -373,15 +389,15 @@ app.post('/getotp', function(req,res){
         port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
-                user: 'adityapandeyiitkgp2125@gmail.com', // generated ethereal user
-                pass: 'rqzevkgnkvschtsl', // generated ethereal password
+                user: 'megalith2023@gmail.com', // generated ethereal user
+                pass: 'ojpstqblgjculdlc', // generated ethereal password
             },
     });
                 // send mail with defined transport object
     let mailinfo ={
-        from: '" Megalith " <adityapandeyiitkgp2125@gmail.com>', // sender address
+        from: '" Megalith " <megalith2023@gmail.com>', // sender address
         to: email, // list of receivers
-        subject: "OTP", // Subject line
+        subject: "OTP for Email Verification!", // Subject line
         // text: "Hello world?", // plain text body
         text: "Hey here is new quert for you..",
         html: `<h3>Welcome to our website</h3>
@@ -400,13 +416,14 @@ app.post('/getotp', function(req,res){
 
 });
 // Showing signup form
+app.use('/signup', express.static(path.join(__dirname, '/views/video/tajmahal')));
 app.use('/signup', express.static(path.join(__dirname, '/views/registerpage')));
 app.get("/signup", function (req, res) {
     res.render("login", {message : req.flash('message')});
 });
 
 // Handling user signup
-app.post("/signup", function (req, res) {
+app.post("/signup", async function (req, res) {
     let name = req.body.name;
     let username = req.body.username;
     let password = req.body.password;
@@ -419,43 +436,92 @@ app.post("/signup", function (req, res) {
     let havemipid = req.body.havemipid;
     let yearsOfStudy = req.body.yearsOfStudy;
     let enteredOTP = req.body.otpentered;
-    let mipid = req.body.mipid;
+    let getmipid = req.body.mipid;
     console.log(req.body.otpentered)
     console.log(havemipid);
     if(havemipid == 'No'){
-        mipid = 'No';
+        getmipid = 'No';
     }
+    if(getmipid !='No'){
+        getmipid=getmipid.slice(2);
+        getmipid = getmipid.toLowerCase();
+        getmipid = "MI" + getmipid;
+    }
+    var finduser = {mipid : getmipid};
+    console.log(getmipid);
     console.log(generatedOTP);
     console.log(enteredOTP);
     if(generatedOTP == enteredOTP){
-        User.register({
-            username,
-            name,
-            mobileNumber,
-            college,
-            country,
-            state,
-            city,
-            gender,
-            yearsOfStudy,
-            mipid
-        },
-        password,
-            function (err, user) {
-                if (err) {
-                    console.log(err);
-                    req.flash('message','Email already exist');
-                    res.redirect("/signup");
-                }
-                console.log("User registered successfully");
-                passport.authenticate("local")(
-                req, res, function () {
-                    console.log("")
-                    if(req.isAuthenticated(req, res)) {
-                        res.redirect('/secret/'+req.user.id);}
+        MIP_ID.findOne(finduser, function (err, foundUsers){
+            console.log(foundUsers);
+            if(foundUsers){
+                console.log("MIP Id find");
+                User.register({
+                    username,
+                    name,
+                    mobileNumber,
+                    college,
+                    country,
+                    state,
+                    city,
+                    gender,
+                    yearsOfStudy,
+                    getmipid
+                },
+                password,
+                    function (err, user) {
+                        if (err) {
+                            console.log(err);
+                            req.flash('message','Email already exist');
+                            res.redirect("/signup");
+                        }
+                        console.log("User registered successfully");
+                        passport.authenticate("local")(
+                        req, res, function () {
+                            console.log("")
+                            if(req.isAuthenticated(req, res)) {
+                                res.redirect('/secret/'+req.user.id);}
+                            });
+            
                     });
-    
-            });
+            }else if(getmipid=='No'){
+                User.register({
+                    username,
+                    name,
+                    mobileNumber,
+                    college,
+                    country,
+                    state,
+                    city,
+                    gender,
+                    yearsOfStudy,
+                    getmipid
+                },
+                password,
+                    function (err, user) {
+                        if (err) {
+                            console.log(err);
+                            req.flash('message','Email already exist');
+                            res.redirect("/signup");
+                        }
+                        console.log("User registered successfully");
+                        passport.authenticate("local")(
+                        req, res, function () {
+                            console.log("")
+                            if(req.isAuthenticated(req, res)) {
+                                res.redirect('/secret/'+req.user.id);}
+                            });
+            
+                    });
+            }
+            else{
+                console.log(err);
+                console.log("Entered MIP ID doesn't exist");
+                req.flash("message","Entered MIP ID does not exist");
+                res.redirect('/signup');
+            }
+        });
+        
     }else{
         console.log("OTP does not match")
         req.flash('message',"OTP does not match")
@@ -517,13 +583,13 @@ app.post('/forgot-password', (req, res, next) => {
                   port: 587,
                   secure: false, // true for 465, false for other ports
                   auth: {
-                    user: 'megalith2019.iitkgp@gmail.com', // generated ethereal user
-                    pass: 'keaophrrnoessady', // generated ethereal password
+                    user: 'megalith2023@gmail.com', // generated ethereal user
+                    pass: 'ojpstqblgjculdlc', // generated ethereal password
                   },
                 });
                 // send mail with defined transport object
                 let mailinfo ={
-                            from: '" Megalith " <megalith2019.iitkgp@gmail.com>', // sender address
+                            from: '" Megalith " <megalith2023@gmail.com>', // sender address
                             to: databaseEmail, // list of receivers
                             subject: "Reset password link", // Subject line
                             html : `<h2>Hello!</h2>
@@ -637,13 +703,13 @@ app.post('/contactus', function (req, res) {
         port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
-                user: 'adityapandeyiitkgp2125@gmail.com', // generated ethereal user
-                pass: 'rqzevkgnkvschtsl', // generated ethereal password
+                user: 'megalith2023@gmail.com', // generated ethereal user
+                pass: 'ojpstqblgjculdlc', // generated ethereal password
             },
     });
                 // send mail with defined transport object
     let mailinfo ={
-        from: '" Megalith " <adityapandeyiitkgp2125@gmail.com>', // sender address
+        from: '" Megalith " <megalith2023@gmail.com>', // sender address
         to: 'adityapandeygkp90@gmail.com , utkarshgupta6203@gmail.com ,', // list of receivers
         subject: "Query details", // Subject line
         // text: "Hello world?", // plain text body

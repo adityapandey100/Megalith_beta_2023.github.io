@@ -48,7 +48,7 @@ function showStuff() {
 }
 // setTimeout(showStuff, 5000);
 $(window).on("load", function () {
-  $(".continue-button").delay(1000).fadeIn();
+  $(".continue-button").delay(200).fadeIn();
 });
 // $("#continue-btn").click(() => {
 //   this.fadeOut(2000);
