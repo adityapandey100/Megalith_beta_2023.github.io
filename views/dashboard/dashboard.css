@@ -5145,7 +5145,7 @@ table.text-center th {
 .card {
   position: relative;
   padding: 1rem;
-  width: 400px;
+  width: 270px;
 
 }
 .card__back:hover, .card__back:focus {
@@ -5154,7 +5154,8 @@ table.text-center th {
 }
 
 .card__front, .card__back {
-  min-height: 20rem;
+  filter: brightness(0.7);
+  min-height: 16rem;
   width: 100%;
   font-size: 1.5rem;
   color: #f1f1f1;
@@ -5189,9 +5190,9 @@ table.text-center th {
 .btn {
   background: white;
   text-decoration: none;
-  width: 23%;
+  width: 40%;
   text-align: center;
-  padding: 10px;
+  padding: 7px;
   border-radius: 5rem;
   color: black;
   font-size: 1.5rem;
@@ -5209,7 +5210,7 @@ table.text-center th {
   background: black;
   border: 0.2rem solid white;
   color: white;
-  width: 80%;
+  width: 78%;
   text-align: center;
   justify-content: center;
 }

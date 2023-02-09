@@ -127,126 +127,35 @@
       <div class="form-container sign-up-container">
         <form action="/signup" class="signupform" method="POST">
           <h1 class="createaccount">Create Account</h1>
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            autocomplete="off"
-            required
-          />
-          <input
-            type="email"
-            class="email"
-            id="email"
-            name="username"
-            placeholder="Email"
-            required
-          />
-          <input type="text" name="password" placeholder="Password" required />
-          <input
-            type="text"
-            name="mobileNumber"
-            class="input"
-            placeholder="Mobile Number"
-            maxlength="13"
-            minlength="6"
-          />
-          <input
-            type="text"
-            name="college"
-            class="input"
-            placeholder="College "
-          />
-          <select
-            style="margin-top: 1.33vw"
-            name="country"
-            class="countries input"
-            id="countrylist"
-          >
+          <input id="disablenamefield" type="text" name="name" placeholder="Name" autocomplete="off" required/>
+          <input type="email" class="email" id="email" name="username" placeholder="Email" required/>
+          <input id="disablepassfield" type="password" name="password" placeholder="Password" required />
+          <input id="disablemobfield" type="text" name="mobileNumber" class="input" placeholder="Mobile Number" maxlength="13" minlength="6"/>
+          <input id="disablecollfield" type="text" name="college" class="input" placeholder="College "/>
+          <select style="margin-top: 1.33vw" name="country" class="countries input" id="countrylist">
             <option value="" selected>Select Country</option>
           </select>
-          <select
-            style="margin-top: 1.33vw"
-            name="state"
-            class="states input"
-            id="statelist"
-            disabled
-          >
+          <select  style="margin-top: 1.33vw" name="state" class="states input" id="statelist" disabled>
             <option value="" selected>Select State</option>
           </select>
-          <select
-            style="margin-top: 1.33vw"
-            name="city"
-            class="cities input"
-            id="citylist"
-            disabled
-          >
+          <select style="margin-top: 1.33vw" name="city" class="cities input" id="citylist" disabled>
             <option value="" selected>Select City</option>
           </select>
-          <select
-            style="margin-top: 1.33vw"
-            name="gender"
-            class="input"
-            placeholder="Select your Gender"
-          >
+          <select id="genderlist" style="margin-top: 1.33vw" name="gender" class="input" placeholder="Select your Gender">
             <option value="none" selected>Gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="other">other</option>
           </select>
-          <input
-            type="text"
-            name="yearOfStudy"
-            class="input"
-            placeholder="Specify your Years of Study"
-          />
-          <div class="reference">Referenced by Megalith Intern ?</div>
-          <div class="buttonmipid">
-            <label class="labelyes" style="display: flex"
-              ><input
-                style="margin-right: 0.5vw"
-                type="radio"
-                name="havemipid"
-                onclick="activemipidc();"
-              />
-              <div class="radiobutton">Yes</div></label
-            >
-            <label style="display: flex"
-              ><input
-                style="margin-right: 0.5vw"
-                type="radio"
-                name="havemipid"
-                value="No"
-                onclick="deactivemipidc();"
-              />
-              <div class="radiobutton">No</div></label
-            >
-          </div>
-          <input
-            style="display: none"
-            type="text"
-            id="mipid"
-            name="mipid"
-            placeholder="MIP Id"
-          />
-          <input
-            type="text"
-            id="enterotp"
-            name="otpentered"
-            class="input"
-            placeholder="Enter OTP"
-          />
-          <button
-            style="border-radius: 3vw"
-            type="button"
-            id="getotp"
-            onclick="generateotp()"
-          >
-            Get OTP
-          </button>
-          <button style="border-radius: 3vw" type="submit" id="signupbutton">
-            Sign Up
-          </button>
+          <input id="disableyear" type="text" name="yearOfStudy" class="input" placeholder="Specify your Years of Study"/>
+          <div id="disableintern" class="reference">Referenced by Megalith Intern ?</div>
+          <div id="disablebutton" class="buttonmipid">
+            <label class="labelyes" style="display: flex"><input style="margin-right: 0.5vw" type="radio" name="havemipid" onclick="activemipidc();"/><div class="radiobutton">Yes</div></label>
+            <label style="display: flex"><input style="margin-right: 0.5vw" type="radio" name="havemipid" value="No" onclick="deactivemipidc();"/><div class="radiobutton">No</div></label></div>
+          <input style="display: none" type="text" id="mipid" name="mipid" placeholder="MIP Id"/>
+          <input type="text" id="enterotp" name="otpentered" class="input " placeholder="Enter OTP"/>
+          <button style="border-radius: 3vw" type="button" id="getotp" onclick="generateotp()">Get OTP</button>
+          <button style="border-radius: 3vw" type="submit" id="signupbutton">Sign Up</button>
         </form>
       </div>
       <div class="form-container sign-in-container">
@@ -255,9 +164,7 @@
           <span>or use your account</span>
           <input type="text" name="username" placeholder="Email" />
           <input type="password" name="password" placeholder="Password" />
-          <button style="border-radius: 3vw; font-size: 1.5rem" type="submit">
-            Sign In
-          </button>
+          <button style="border-radius: 3vw; font-size: 1.5rem" type="submit">Sign In</button>
           <a class="forgotpassword" href="/forgot-password">Forgot Password</a>
         </form>
       </div>
@@ -266,10 +173,25 @@
     <script>
       var email1 = "";
       function generateotp() {
-        alert("The OTP has been successfully sent to your registered email ID. Kindly check your inbox or spam folder");
+        // data.success = false;
         document.getElementById("getotp").style.display = "none";
         document.getElementById("enterotp").style.display = "block";
         document.getElementById("signupbutton").style.display = "block";
+        document.getElementById("disablenamefield").style.display = "none";
+        document.getElementById("disablepassfield").style.display = "none";
+        document.getElementById("disablemobfield").style.display = "none";
+        document.getElementById("disablecollfield").style.display = "none";
+        document.getElementById("statelist").style.display = "none";
+        document.getElementById("countrylist").style.display = "none";
+        document.getElementById("citylist").style.display = "none";
+        document.getElementById("genderlist").style.display = "none";
+        document.getElementById("disableyear").style.display = "none";
+        document.getElementById("disableintern").style.display = "none";
+        document.getElementById("disablebutton").style.display = "none";
+        document.getElementById("mipid").style.display = "none";
+        document.getElementById("disableintern").style.display = "none";
+        document.getElementById("disableintern").style.display = "none";
+        document.getElementById("email").style.display = "none";
         email1 = document.getElementById("email").value;
         console.log(email1);
         fetch("/getotp", {
@@ -281,7 +203,16 @@
           headers: {
             "Content-type": "application/json",
           },
-        });
+        })
+        .then(result => result.json())
+        .then(data => {
+            if(data.success){
+              alert("Email already exist");
+              window.location.href = "/signup"
+            }else{
+              alert("The OTP has been successfully sent to your registered email ID. Kindly check your inbox or spam folder");
+            }
+         })
       }
     </script>
 

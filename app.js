@@ -144,7 +144,6 @@ const registereventSchema=new mongoose.Schema({
 });
 
 const registerevent = mongoose.model("registerevent", registereventSchema);
-
 //Defining register for event data
 const registerworkshopSchema=new mongoose.Schema({
     name : {
@@ -167,6 +166,26 @@ const registerworkshopSchema=new mongoose.Schema({
 
 const registerworkshop = mongoose.model("registerworkshop", registerworkshopSchema);
 
+const registereventandworkshopSchema=new mongoose.Schema({
+    name : {
+        type: String,
+        required: true,
+        trim: true
+    },
+    mobileNumber :{
+        type:String,
+        required:true,
+        trim:true
+    },
+    emailID :{
+        type: String,
+        required:true,
+        trim:true
+
+    },
+});
+
+const registereventandworkshop = mongoose.model("registereventandworkshop", registereventandworkshopSchema);
 const MIP_IDSchema = new mongoose.Schema({
     mipid :{
         type:String,
@@ -319,6 +338,7 @@ app.get("/secret/:id", isLoggedIn, function (req, res) {
 });
 
 app.post('/registerforevent', function(req,res){
+    console.log("hihihi");
     const id = req.body.userid;
     console.log(id);
     var objectId = mongoose.Types.ObjectId(id);
@@ -376,7 +396,35 @@ app.post('/registerforworkshop', function(req,res){
             console.log("Something error occured");
             return;
         }
-
+    });
+});
+app.post('/registereventandworkshop', function(req,res){
+    const id = req.body.userid;
+    console.log(id);
+    var objectId = mongoose.Types.ObjectId(id);
+    User.findOne({ _id: objectId }, function (err, foundUsers) {
+        if (foundUsers) {
+            // console.log(foundUsers,typeof(foundUsers));
+            let name = foundUsers.name;
+            let mobileNumber = foundUsers.mobileNumber;
+            let emailID = foundUsers.username;
+            console.log(name);
+            console.log(mobileNumber);
+            console.log(emailID);
+            new registereventandworkshop({
+                name : name,
+                mobileNumber:mobileNumber,
+                emailID : emailID
+            }).save(function(err,doc){
+                if(err){
+                    console.log(err)
+                } 
+            });
+            // res.json({ data: foundUsers.id })
+        } else {
+            console.log("Something error occured");
+            return;
+        }
     });
 });
 app.post('/getotp', function(req,res){
@@ -384,36 +432,45 @@ app.post('/getotp', function(req,res){
     generatedOTP = otp;
     console.log(otp);
     let email = req.body.email;
-    const transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
-        port: 587,
-        secure: false, // true for 465, false for other ports
-        auth: {
-                user: 'megalith2023@gmail.com', // generated ethereal user
-                pass: 'ojpstqblgjculdlc', // generated ethereal password
-            },
-    });
-                // send mail with defined transport object
-    let mailinfo ={
-        from: '" Megalith " <megalith2023@gmail.com>', // sender address
-        to: email, // list of receivers
-        subject: "OTP for Email Verification!", // Subject line
-        // text: "Hello world?", // plain text body
-        text: "Hey here is new quert for you..",
-        html: `<h3>Welcome to our website</h3>
-            <p> OTP for confirmation of email is as follows. </p>
-            <P>OTP : ${generatedOTP}</P>
-            <p>Regards,</p>
-            <p>Team Megalith</p>`
-    };
-    transporter.sendMail(mailinfo, function(error, info){
-        if (error) {
-          console.log(error);
-        } else {
-        console.log('Email sent: ' + info.response);
+    User.findOne({ username: email }, function (err, foundUsers) {
+        if (foundUsers) {
+            console.log("email already exist");
+            // req.flash('message','Email already exist');
+            res.json({success : true});
+        }
+        else{
+            const transporter = nodemailer.createTransport({
+                host: "smtp.gmail.com",
+                port: 587,
+                secure: false, // true for 465, false for other ports
+                auth: {
+                        user: 'megalith2023@gmail.com', // generated ethereal user
+                        pass: 'ojpstqblgjculdlc', // generated ethereal password
+                    },
+            });
+                        // send mail with defined transport object
+            let mailinfo ={
+                from: '" Megalith " <megalith2023@gmail.com>', // sender address
+                to: email, // list of receivers
+                subject: "OTP for Email Verification!", // Subject line
+                // text: "Hello world?", // plain text body
+                text: "Hey here is new quert for you..",
+                html: `<h3>Welcome to our website</h3>
+                    <p> OTP for confirmation of email is as follows. </p>
+                    <P>OTP : ${generatedOTP}</P>
+                    <p>Regards,</p>
+                    <p>Team Megalith</p>`
+            };
+            transporter.sendMail(mailinfo, function(error, info){
+                if (error) {
+                  console.log(error);
+                } else {
+                console.log('Email sent: ' + info.response);
+                }
+            });
+            res.json({success:false})
         }
     });
-
 });
 // Showing signup form
 app.use('/signup', express.static(path.join(__dirname, '/views/video/tajmahal')));
