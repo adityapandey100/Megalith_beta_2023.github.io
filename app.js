@@ -338,9 +338,7 @@ app.get("/secret/:id", isLoggedIn, function (req, res) {
 });
 
 app.post('/registerforevent', function(req,res){
-    console.log("hihihi");
     const id = req.body.userid;
-    console.log(id);
     var objectId = mongoose.Types.ObjectId(id);
     User.findOne({ _id: objectId }, function (err, foundUsers) {
         if (foundUsers) {
@@ -348,17 +346,22 @@ app.post('/registerforevent', function(req,res){
             let name = foundUsers.name;
             let mobileNumber = foundUsers.mobileNumber;
             let emailID = foundUsers.username;
-            console.log(name);
-            console.log(mobileNumber);
-            console.log(emailID);
-            new registerevent({
-                name : name,
-                mobileNumber:mobileNumber,
-                emailID : emailID
-            }).save(function(err,doc){
-                if(err){
-                    console.log(err)
-                } 
+            registerevent.findOne({username : emailID }, function(err,getuser){
+                if(getuser){
+                    res.json({success : false});
+                }
+                else {
+                    new registerevent({
+                        name : name,
+                        mobileNumber:mobileNumber,
+                        emailID : emailID
+                    }).save(function(err,doc){
+                        if(err){
+                            console.log(err)
+                        } 
+                    });
+                    res.json({success:true});
+                }
             });
             // res.json({ data: foundUsers.id })
         } else {
@@ -379,17 +382,22 @@ app.post('/registerforworkshop', function(req,res){
             let name = foundUsers.name;
             let mobileNumber = foundUsers.mobileNumber;
             let emailID = foundUsers.username;
-            console.log(name);
-            console.log(mobileNumber);
-            console.log(emailID);
-            new registerworkshop({
-                name : name,
-                mobileNumber:mobileNumber,
-                emailID : emailID
-            }).save(function(err,doc){
-                if(err){
-                    console.log(err)
-                } 
+            registerworkshop.findOne({username : emailID }, function(err,getuser){
+                if(getuser){
+                    res.json({success : false});
+                }
+                else {
+                    new registerworkshop({
+                        name : name,
+                        mobileNumber:mobileNumber,
+                        emailID : emailID
+                    }).save(function(err,doc){
+                        if(err){
+                            console.log(err)
+                        } 
+                    });
+                    res.json({success:true});
+                }
             });
             // res.json({ data: foundUsers.id })
         } else {
@@ -411,14 +419,22 @@ app.post('/registereventandworkshop', function(req,res){
             console.log(name);
             console.log(mobileNumber);
             console.log(emailID);
-            new registereventandworkshop({
-                name : name,
-                mobileNumber:mobileNumber,
-                emailID : emailID
-            }).save(function(err,doc){
-                if(err){
-                    console.log(err)
-                } 
+            registereventandworkshop.findOne({username : emailID }, function(err,getuser){
+                if(getuser){
+                    res.json({success : false});
+                }
+                else {
+                    new registereventandworkshop({
+                        name : name,
+                        mobileNumber:mobileNumber,
+                        emailID : emailID
+                    }).save(function(err,doc){
+                        if(err){
+                            console.log(err)
+                        } 
+                    });
+                    res.json({success:true});
+                }
             });
             // res.json({ data: foundUsers.id })
         } else {
@@ -430,7 +446,6 @@ app.post('/registereventandworkshop', function(req,res){
 app.post('/getotp', function(req,res){
     let otp = newOTP.generate(6, {lowerCaseAlphabets: false , upperCaseAlphabets: false , specialChars:false});
     generatedOTP = otp;
-    console.log(otp);
     let email = req.body.email;
     User.findOne({ username: email }, function (err, foundUsers) {
         if (foundUsers) {
@@ -590,18 +605,49 @@ app.post("/signup", async function (req, res) {
 
 
 //Handling user login
-app.post("/login", passport.authenticate("local", {
-    // successRedirect: "/secret",
-    failureRedirect: "/signup",
-}), function (req, res) {
-    console.log("login",req.user);
+// app.post("/login", passport.authenticate("local", {
+//     // successRedirect: "/secret",
+//     failureRedirect: "/signup",
+//     failureFlash : 'Invalid username or password',
+//     failureFlash : true,
+//     failureMessage : 'invalid credential'
+// }), function (req, res) {
+//     console.log("login",req.user);
 
-        if(req.isAuthenticated(req, res)) {
-            res.redirect('/secret/'+req.user.id);
-        }
-});
+        // if(req.isAuthenticated(req, res)) {
+        //     res.redirect('/secret/'+req.user.id);
+        // }
+// });
 
-
+app.post("/login", (req, res) => {
+    passport.authenticate("local",
+        (err, user, options) => {
+          if (user) {
+            // If the user exists log him in:
+            req.login(user, (error)=>{
+              if (error) {
+                res.send(error);
+              } else {
+                if(req.isAuthenticated(req, res)) {
+                    res.redirect('/secret/'+req.user.id);
+                }
+                console.log("Successfully authenticated");
+                // HANDLE SUCCESSFUL LOGIN 
+                // e.g. res.redirect("/home")
+              };
+            });
+          } else {
+            console.log(options.message);
+            req.flash('message',options.message);
+            res.redirect('/signup');
+             // Prints the reason of the failure
+            // HANDLE FAILURE LOGGING IN 
+            // e.g. res.redirect("/login"))
+            // or
+            // res.render("/login", { message: options.message || "custom message" })
+          };
+    })(req, res)
+  });
 
 
 //Handling user logout

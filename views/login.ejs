@@ -42,16 +42,9 @@
       <source src="TajMahal.mp4" type="video/mp4" />
     </video>
 
-    <nav
-      style="position: absolute; padding: 0%"
-      class="navbar navbar-expand-custom navbar-mainbg"
-    >
+    <nav style="position: absolute; padding: 0%" class="navbar navbar-expand-custom navbar-mainbg">
       <a class="navbar-brand navbar-logo" href="/">
-        <img
-          style="width: 24.7%; padding: 0%; margin-left: -2px; margin-top: -4px"
-          src="l.png"
-          alt="logo"
-        />
+        <img style="width: 24.7%; padding: 0%; margin-left: -2px; margin-top: -4px" src="l.png" alt="logo"/>
       </a>
       <button
         class="navbar-toggler"
@@ -127,9 +120,10 @@
       <div class="form-container sign-up-container">
         <form action="/signup" class="signupform" method="POST">
           <h1 class="createaccount">Create Account</h1>
-          <input id="disablenamefield" type="text" name="name" placeholder="Name" autocomplete="off" required/>
+          <div class="requiredinput">
+            <input id="disablenamefield" type="text" name="name" placeholder="Name" autocomplete="off" required/>
           <input type="email" class="email" id="email" name="username" placeholder="Email" required/>
-          <input id="disablepassfield" type="password" name="password" placeholder="Password" required />
+          <input id="disablepassfield" type="password" name="password" placeholder="Password" required  minlength="6"/>
           <input id="disablemobfield" type="text" name="mobileNumber" class="input" placeholder="Mobile Number" maxlength="13" minlength="6"/>
           <input id="disablecollfield" type="text" name="college" class="input" placeholder="College "/>
           <select style="margin-top: 1.33vw" name="country" class="countries input" id="countrylist">
@@ -149,10 +143,11 @@
           </select>
           <input id="disableyear" type="text" name="yearOfStudy" class="input" placeholder="Specify your Years of Study"/>
           <div id="disableintern" class="reference">Referenced by Megalith Intern ?</div>
-          <div id="disablebutton" class="buttonmipid">
+          <div id="disablebutton" class="buttonmipid" style="margin-left: 8vw;">
             <label class="labelyes" style="display: flex"><input style="margin-right: 0.5vw" type="radio" name="havemipid" onclick="activemipidc();"/><div class="radiobutton">Yes</div></label>
             <label style="display: flex"><input style="margin-right: 0.5vw" type="radio" name="havemipid" value="No" onclick="deactivemipidc();"/><div class="radiobutton">No</div></label></div>
           <input style="display: none" type="text" id="mipid" name="mipid" placeholder="MIP Id"/>
+          </div>
           <input type="text" id="enterotp" name="otpentered" class="input " placeholder="Enter OTP"/>
           <button style="border-radius: 3vw" type="button" id="getotp" onclick="generateotp()">Get OTP</button>
           <button style="border-radius: 3vw" type="submit" id="signupbutton">Sign Up</button>
@@ -169,12 +164,16 @@
         </form>
       </div>
     </div>
-
     <script>
-      var email1 = "";
-      function generateotp() {
-        // data.success = false;
-        document.getElementById("getotp").style.display = "none";
+      $('#getotp').on("click", function(){
+        let valid = true;
+        $('[required]').each(function() {
+          if ($(this).is(':invalid') || !$(this).val()) valid = false;
+        })
+        if (!valid) alert("error please fill all fields!");
+        if(valid){
+          var email1 = "";
+          document.getElementById("getotp").style.display = "none";
         document.getElementById("enterotp").style.display = "block";
         document.getElementById("signupbutton").style.display = "block";
         document.getElementById("disablenamefield").style.display = "none";
@@ -213,6 +212,14 @@
               alert("The OTP has been successfully sent to your registered email ID. Kindly check your inbox or spam folder");
             }
          })
+        }
+      })
+    </script>
+    <script>
+      var email1 = "";
+      function generateotp() {
+        // data.success = false;
+        
       }
     </script>
 
