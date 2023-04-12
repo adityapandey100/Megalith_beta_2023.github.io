@@ -43,6 +43,7 @@ function test() {
       test();
     });
   });
+
   
   // --------------add active class-on another-page move----------
   jQuery(document).ready(function ($) {

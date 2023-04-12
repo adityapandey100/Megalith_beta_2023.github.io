@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <meta charset="UTF-8" />
+    <meta charset="UTF-8" />
   <title> Megalith 2023 | The Annual Fest of Civil Engineering | IIT Kharagpur  </title>
   <meta name="title" content="Megalith 2023 IIT Kharagpur">
   <meta name="description" content="Megalith 2023 | The Annual Tech-fest of Civil Engineering Department | IIT Kharagpur">
@@ -25,14 +25,23 @@
 
     <link rel="stylesheet" href="navbar.css" />
     <link rel="stylesheet" href="theme.css" />
-    <style>
-      .hori-selector{
-        background: transparent;
+<style>
+      .activeupdated{
+        background-color: white;
+        border-top-left-radius: 19px;
+        border-top-right-radius: 19px;
+                     }
+      #navbarSupportedContent ul li .activeupdated{
+       color:blue;
       }
-      .navbar-mainbg{
-        opacity: 0.87;
-      }
+      @media(max-width:992px){
+        .activeupdated{
+          border-radius: 30px;
+        }
+}
+.navbar-mainbg{ background-color:rgb(0,0,0,0.87);}
     </style>
+
   </head>
   <body>
     <header>
@@ -71,8 +80,8 @@
             <li class="nav-item">
               <a class="nav-link" href="/team">Team</a>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="/theme">Theme</a>
+            <li class="nav-item">
+              <a class="nav-link activeupdated" href="/theme">Theme</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/signup">Register</a>

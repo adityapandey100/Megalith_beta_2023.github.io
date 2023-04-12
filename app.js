@@ -20,6 +20,7 @@ const { response } = require('express');
 const { trim, result, update } = require('lodash');
 const { StringDecoder } = require('string_decoder');
 const { stringify } = require('querystring');
+var generatedforgototp;
 var generatedOTP;
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -346,24 +347,26 @@ app.post('/registerforevent', function(req,res){
             let name = foundUsers.name;
             let mobileNumber = foundUsers.mobileNumber;
             let emailID = foundUsers.username;
-            registerevent.findOne({username : emailID }, function(err,getuser){
-                if(getuser){
+            registerevent.findOne({emailID:emailID},function(err,userfound){
+                if(userfound){
+                    console.log("User already exist");
                     res.json({success : false});
+                    console.log(userfound);
                 }
-                else {
-                    new registerevent({
+                else{
+                    const object = new registerevent({
                         name : name,
                         mobileNumber:mobileNumber,
                         emailID : emailID
-                    }).save(function(err,doc){
+                    })
+                    object.save(function(err,doc){
                         if(err){
                             console.log(err)
                         } 
                     });
-                    res.json({success:true});
+                    res.json({success : true});
                 }
-            });
-            // res.json({ data: foundUsers.id })
+            })
         } else {
             console.log("Something error occured");
             return;
@@ -382,23 +385,26 @@ app.post('/registerforworkshop', function(req,res){
             let name = foundUsers.name;
             let mobileNumber = foundUsers.mobileNumber;
             let emailID = foundUsers.username;
-            registerworkshop.findOne({username : emailID }, function(err,getuser){
-                if(getuser){
+            registerworkshop.findOne({emailID:emailID},function(err,userfound){
+                if(userfound){
+                    console.log("User already exist");
                     res.json({success : false});
+                    console.log(userfound);
                 }
-                else {
-                    new registerworkshop({
+                else{
+                    const object = new registerworkshop({
                         name : name,
                         mobileNumber:mobileNumber,
                         emailID : emailID
-                    }).save(function(err,doc){
+                    })
+                    object.save(function(err,doc){
                         if(err){
                             console.log(err)
                         } 
                     });
-                    res.json({success:true});
+                    res.json({success : true});
                 }
-            });
+            })
             // res.json({ data: foundUsers.id })
         } else {
             console.log("Something error occured");
@@ -413,29 +419,33 @@ app.post('/registereventandworkshop', function(req,res){
     User.findOne({ _id: objectId }, function (err, foundUsers) {
         if (foundUsers) {
             // console.log(foundUsers,typeof(foundUsers));
+            console.log(foundUsers);
             let name = foundUsers.name;
             let mobileNumber = foundUsers.mobileNumber;
             let emailID = foundUsers.username;
             console.log(name);
             console.log(mobileNumber);
             console.log(emailID);
-            registereventandworkshop.findOne({username : emailID }, function(err,getuser){
-                if(getuser){
+            registereventandworkshop.findOne({emailID:emailID},function(err,userfound){
+                if(userfound){
+                    console.log("User already exist");
                     res.json({success : false});
+                    console.log(userfound);
                 }
-                else {
-                    new registereventandworkshop({
+                else{
+                    const object = new registereventandworkshop({
                         name : name,
                         mobileNumber:mobileNumber,
                         emailID : emailID
-                    }).save(function(err,doc){
+                    })
+                    object.save(function(err,doc){
                         if(err){
-                            console.log(err)
-                        } 
+                            console.log(err);
+                        }else console.log("registered"); 
                     });
-                    res.json({success:true});
+                    res.json({success : true});
                 }
-            });
+            })
             // res.json({ data: foundUsers.id })
         } else {
             console.log("Something error occured");
@@ -601,24 +611,6 @@ app.post("/signup", async function (req, res) {
     }
 });
 
-//Showing login form
-
-
-//Handling user login
-// app.post("/login", passport.authenticate("local", {
-//     // successRedirect: "/secret",
-//     failureRedirect: "/signup",
-//     failureFlash : 'Invalid username or password',
-//     failureFlash : true,
-//     failureMessage : 'invalid credential'
-// }), function (req, res) {
-//     console.log("login",req.user);
-
-        // if(req.isAuthenticated(req, res)) {
-        //     res.redirect('/secret/'+req.user.id);
-        // }
-// });
-
 app.post("/login", (req, res) => {
     passport.authenticate("local",
         (err, user, options) => {
@@ -631,7 +623,6 @@ app.post("/login", (req, res) => {
                 if(req.isAuthenticated(req, res)) {
                     res.redirect('/secret/'+req.user.id);
                 }
-                console.log("Successfully authenticated");
                 // HANDLE SUCCESSFUL LOGIN 
                 // e.g. res.redirect("/home")
               };
@@ -663,129 +654,200 @@ app.use('/forgot-password', express.static(path.join(__dirname, '/views/forgotpa
 app.get('/forgot-password', (req, res, next) => {
     res.render('forgot-password');
 });
-app.post('/forgot-password', (req, res, next) => {
-    const { enteredEmail } = req.body;
 
-    //Make sure user exists inside the database
-    User.findOne({ username: enteredEmail }, function (err, foundUsers) {
-        if (foundUsers) {
-            // User exists and now create a one time link valid for 15 minutes
-            console.log(foundUsers);
-            const databaseEmail = foundUsers.username;
-            const ID = foundUsers._id.toString();
-            const secret = jwtSecret + foundUsers.password;
-            const payload = {
-                email: databaseEmail,
-                id: ID
-            }
-            const token = jwt.sign(payload, secret, { expiresIn: '15m' })
-            const link = `https://2023.megalith.co.in/reset-password/${ID}/${token}`
-            console.log(link);
+app.post('/getforgototp', function(req, res) {
+    let forgototp = newOTP.generate(6, {lowerCaseAlphabets: false , upperCaseAlphabets: false , specialChars:false});
+    generatedforgototp = forgototp;
+    console.log(generatedforgototp)
+    let emailID = req.body.email;
+    User.findOne({username : emailID},function(err,foundUsers){
+        if(foundUsers){
             const transporter = nodemailer.createTransport({
-                  host: "smtp.gmail.com",
-                  port: 587,
-                  secure: false, // true for 465, false for other ports
-                  auth: {
-                    user: 'megalith2023@gmail.com', // generated ethereal user
-                    pass: 'ojpstqblgjculdlc', // generated ethereal password
-                  },
-                });
-                // send mail with defined transport object
-                let mailinfo ={
-                            from: '" Megalith " <megalith2023@gmail.com>', // sender address
-                            to: databaseEmail, // list of receivers
-                            subject: "Reset password link", // Subject line
-                            html : `<h2>Hello!</h2>
-                                    <p>You are receiving this email because we received a password reset request for your account.</p>
-                                    <a href="${link}"><button style  = "background-color: blue; border: none; color: white; padding: 10px 24px; text-align: center; text-decoration: none; display: flex; align-items: center; justify-content:center; font-size: 12px; border-radius: 25px; cursor: pointer;"> Reset Password </button></a>
-                                    <h3>Regards,</h3>
-                                    <h3>Megalith 2023</h3>`
-                        };
-                      transporter.sendMail(mailinfo, function(error, info){
-                        if (error) {
-                          console.log(error);
-                          res.send("Not Found!!")
-                        } else {
-                          console.log('Email sent: ' + info.response);
-                          res.redirect("/");
-                        }
-                      });
-        }
-        else{
-            console.log("User not found");
-        }
-    });
-});
-
-
-
-app.use('/reset-password/:ID/:token', express.static(path.join(__dirname, '/views/resetpassword')))
-app.get('/reset-password/:ID/:token', (req, res, next) => {
-    const { ID, token } = req.params;
-    //check if this id exists in database
-    //objectId=require('mongodb').ObjectID(ID);
-    var objectId = mongoose.Types.ObjectId(ID);
-    User.findOne({ _id: objectId }, function (err, foundUsers) {
-        if (foundUsers) {
-            //We have a valid ID and we have a valid User with this ID
-            const secret = jwtSecret + foundUsers.password;
-            try {
-                const payload = jwt.verify(token, secret);
-                res.render('reset-password', { email: foundUsers.username })
-            } catch (error) {
-                console.log(error.message);
-                res.send(error.message);
-            }
-        } else {
-            res.send("Invalid User ID");
-            return;
-        }
-
+                host: "smtp.gmail.com",
+                port: 587,
+                secure: false, // true for 465, false for other ports
+                auth: {
+                        user: 'megalith2023@gmail.com', // generated ethereal user
+                        pass: 'hfzippmfntgvsltb', // generated ethereal password
+                    },
+            });
+                        // send mail with defined transport object
+            let mailinfo ={
+                from: '" Megalith " <megalith2023@gmail.com>', // sender address
+                to: emailID, // list of receivers
+                subject: "OTP for Email Verification!", // Subject line
+                // text: "Hello world?", // plain text body
+                text: "Hey here is new quert for you..",
+                html: `<h3>Welcome to our website</h3>
+                    <p> OTP for confirmation of email is as follows. </p>
+                    <P>OTP : ${generatedforgototp}</P>
+                    <p>Regards,</p>
+                    <p>Team Megalith</p>`
+            };
+            transporter.sendMail(mailinfo, function(error, info){
+                if (error) {
+                  console.log(error);
+                } else {
+                console.log('Email sent: ' + info.response);
+                }
+            });
+        }  
+        else {
+            res.json({success : true});
+        }      
     })
+
 });
-app.post('/reset-password/:ID/:token', (req, res, next) => {
-    const { ID, token } = req.params;
-    const { password, password2 } = req.body;
-    var objectId = mongoose.Types.ObjectId(ID);
-    User.findOne({ _id: objectId }, function (err, foundUsers) {
-        if (foundUsers) {
-            const secret = jwtSecret + foundUsers.password;
-            try {
-                const payload = jwt.verify(token, secret);
-                //validate password and password2 should match 
-                if (password !== password2) {
-                    res.send(alert("The passwords are not same! Please see to it!"));
-                }
-                //we can simply find the user using the payload email and id and update with new password
-                /*
-                USING BCRYPT AS AN ALTERATIVE BUT USE PASSPORT.JS FIRST FOR HASHING 
-                const securePassword= async (password)=>{
-                    const passwordHash = await bcrypt.hash(password,5);
-                    foundUsers.password = passwordHash;
-                }
-                //always hash the password before saving
-                */
-                
-                foundUsers.setPassword(password, function(err,user){
+app.post('/forgot-password', (req, res, next) => {
+    let emailID = req.body.enteredEmail;
+    let newpassword = req.body.newpassword;
+    let confirmpassword = req.body.confirmpassword;
+    let enteredforgotOTP = req.body.forgototp;
+    if (enteredforgotOTP == generatedforgototp){
+        User.findOne({username:emailID},function(err,foundUsers){
+            if(foundUsers){
+                foundUsers.setPassword(newpassword, function(err,user){
                     if (err) {
                         console.log(err)
                         res.json({success: false, message: 'Password could not be saved. Please try again!'});
                     } else { foundUsers.save();
                         console.log(foundUsers);
+                        req.flash('message','Password Updated Successfully');
                         res.redirect("/signup"); }
-                     });
-                
-            } catch (error) {
-                console.log(error.message);
-                res.send(error.message);
+                });
             }
-        } else {
-            res.send("Invalid USER ID");
-            return;
-        }
-    });
-    console.log("done till here!!");
+            else{
+                
+                res.json("User not found");
+            }
+        })
+    }
 });
+
+
+// app.post('/forgot-password', (req, res, next) => {
+//     const { enteredEmail } = req.body;
+
+//     //Make sure user exists inside the database
+//     User.findOne({ username: enteredEmail }, function (err, foundUsers) {
+//         if (foundUsers) {
+//             // User exists and now create a one time link valid for 15 minutes
+//             console.log(foundUsers);
+//             const databaseEmail = foundUsers.username;
+//             const ID = foundUsers._id.toString();
+//             const secret = jwtSecret + foundUsers.password;
+//             const payload = {
+//                 email: databaseEmail,
+//                 id: ID
+//             }
+//             const token = jwt.sign(payload, secret, { expiresIn: '15m' })
+//             const link = `https://2023.megalith.co.in/reset-password/${ID}/${token}`
+//             console.log(link);
+//             const transporter = nodemailer.createTransport({
+//                   host: "smtp.gmail.com",
+//                   port: 587,
+//                   secure: false, // true for 465, false for other ports
+//                   auth: {
+//                     user: 'megalith2023@gmail.com', // generated ethereal user
+//                     pass: 'ojpstqblgjculdlc', // generated ethereal password
+//                   },
+//                 });
+//                 // send mail with defined transport object
+//                 let mailinfo ={
+//                             from: '" Megalith " <megalith2023@gmail.com>', // sender address
+//                             to: databaseEmail, // list of receivers
+//                             subject: "Reset password link", // Subject line
+//                             html : `<h2>Hello!</h2>
+//                                     <p>You are receiving this email because we received a password reset request for your account.</p>
+//                                     <a href="${link}"><button style  = "background-color: blue; border: none; color: white; padding: 10px 24px; text-align: center; text-decoration: none; display: flex; align-items: center; justify-content:center; font-size: 12px; border-radius: 25px; cursor: pointer;"> Reset Password </button></a>
+//                                     <h3>Regards,</h3>
+//                                     <h3>Megalith 2023</h3>`
+//                         };
+//                       transporter.sendMail(mailinfo, function(error, info){
+//                         if (error) {
+//                           console.log(error);
+//                           res.send("Not Found!!")
+//                         } else {
+//                           console.log('Email sent: ' + info.response);
+//                           res.redirect("/");
+//                         }
+//                       });
+//         }
+//         else{
+//             console.log("User not found");
+//         }
+//     });
+// });
+
+
+
+// app.use('/reset-password/:ID/:token', express.static(path.join(__dirname, '/views/resetpassword')))
+// app.get('/reset-password/:ID/:token', (req, res, next) => {
+//     const { ID, token } = req.params;
+//     //check if this id exists in database
+//     //objectId=require('mongodb').ObjectID(ID);
+//     var objectId = mongoose.Types.ObjectId(ID);
+//     User.findOne({ _id: objectId }, function (err, foundUsers) {
+//         if (foundUsers) {
+//             //We have a valid ID and we have a valid User with this ID
+//             const secret = jwtSecret + foundUsers.password;
+//             try {
+//                 const payload = jwt.verify(token, secret);
+//                 res.render('reset-password', { email: foundUsers.username })
+//             } catch (error) {
+//                 console.log(error.message);
+//                 res.send(error.message);
+//             }
+//         } else {
+//             res.send("Invalid User ID");
+//             return;
+//         }
+
+//     })
+// });
+// app.post('/reset-password/:ID/:token', (req, res, next) => {
+//     const { ID, token } = req.params;
+//     const { password, password2 } = req.body;
+//     var objectId = mongoose.Types.ObjectId(ID);
+//     User.findOne({ _id: objectId }, function (err, foundUsers) {
+//         if (foundUsers) {
+//             const secret = jwtSecret + foundUsers.password;
+//             try {
+//                 const payload = jwt.verify(token, secret);
+//                 //validate password and password2 should match 
+//                 if (password !== password2) {
+//                     res.send(alert("The passwords are not same! Please see to it!"));
+//                 }
+//                 //we can simply find the user using the payload email and id and update with new password
+//                 /*
+//                 USING BCRYPT AS AN ALTERATIVE BUT USE PASSPORT.JS FIRST FOR HASHING 
+//                 const securePassword= async (password)=>{
+//                     const passwordHash = await bcrypt.hash(password,5);
+//                     foundUsers.password = passwordHash;
+//                 }
+//                 //always hash the password before saving
+//                 */
+                
+//                 foundUsers.setPassword(password, function(err,user){
+//                     if (err) {
+//                         console.log(err)
+//                         res.json({success: false, message: 'Password could not be saved. Please try again!'});
+//                     } else { foundUsers.save();
+//                         console.log(foundUsers);
+//                         res.redirect("/signup"); }
+//                      });
+                
+//             } catch (error) {
+//                 console.log(error.message);
+//                 res.send(error.message);
+//             }
+//         } else {
+//             res.send("Invalid USER ID");
+//             return;
+//         }
+//     });
+//     console.log("done till here!!");
+// });
 
 //==============================================================================//
 

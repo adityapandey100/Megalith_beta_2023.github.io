@@ -7,6 +7,9 @@
     outline: none;
     border: none;
     text-decoration: none;
+font-family: 'roboto', sans-serif !important;
+text-align:justify !important;
+
   }
   html {
   scroll-behavior: smooth;
@@ -23,6 +26,7 @@
     position:sticky;
     top:0;
     width:100%;
+ background-size: cover !important;
     
   }
   .container .section:nth-child(1){

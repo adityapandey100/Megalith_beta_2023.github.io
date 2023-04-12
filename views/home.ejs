@@ -28,6 +28,23 @@
     <link rel="stylesheet" href="home.css" />
     <link rel="stylesheet" href="buttons.css" />
     <link rel="stylesheet" href="style.css">
+<style>
+      .activeupdated{
+        background-color: white;
+        border-top-left-radius: 19px;
+        border-top-right-radius: 19px;
+                     }
+      #navbarSupportedContent ul li .activeupdated{
+       color:blue;
+      }
+      @media(max-width:992px){
+        .activeupdated{
+          border-radius: 30px;
+        }
+}
+.navbar-mainbg{ background-color:rgb(0,0,0,0.87);}
+    </style>
+
   </head>
   <body>
     <div id="buttonHide" class="ButtonHide" style="display: block" style="background: none;">
@@ -44,7 +61,7 @@
       <video id="video" src="ajanta(1).mp4" loop muted autoplay style="display: none"></video>
       <nav id="navbarId" class="navbar navbar-expand-custom navbar-mainbg" style="display: none">
         <a class="navbar-brand navbar-logo" href="/">
-          <img style="    width: 24.5%;
+          <img style="    width: 54px;
           padding: 0%;
           margin-left: -2px;
           margin-top: -3px;" src="l.png" alt="logo">
@@ -65,9 +82,8 @@
               <div class="left"></div>
               <div class="right"></div>
             </div>
-            <li class="nav-item active">
-              <a class="nav-link"  href="/"
-                >Home</a
+            <li class="nav-item ">
+              <a class="nav-link activeupdated"  href="/">Home</a
               >
             </li>
             <li class="nav-item ">
@@ -116,7 +132,7 @@
         <div class="tab-pane active" id="home">
           <div id="first-heading" class="first-heading" style="display: none">
             <img class="logo-image" src="main-logo.png" alt="logo">
-            <span id="adivitya" >Advitiya: essence of Ancient india</span>
+            <span id="adivitya" >Advitiya: Essence of Ancient India</span>
               <div class="schedule-button">
                 <button class="btn" onclick="window.location.href='/commingsoon'">Schedule</button>
                 <div class="btn-particles"></div>
@@ -128,8 +144,7 @@
               
             <div class="add-on">
               <h1 style="font-size: 1.5rem;">India's Largest Civil Engineering Fest</h1>
-              <h1 style="font-size: 1.5rem;">3rd - 5th March 2023</h1>
-              <h1 style="font-size: 1.5rem;">IIT Kharagpur</h1>
+              <h1 style="font-size: 1.5rem;">3-5 March, 2023</h1>
             </div>
           </div>
           <div id="second-heading" style="display: none">
@@ -169,11 +184,13 @@
             <div id="bell-container" class="bell-container" style="display: none">
               <div class = "notification">
                 <div class = "notBtn" href = "#">
-                  <div class = "number">0</div>
+                  <div class = "number">2</div>
                   <i class="fas fa-bell"></i>
                     <div class = "box">
-                      <div>
-                        <p>Nothing here to display</p>
+                      <div><ul>
+                        <li style="margin-top:1rem;margin-bottom:1rem;">Problem statement of Green Canvas is released. Check <a href="/event/greencanvas">here.</a></li>
+                        <li style="margin-top:1rem;margin-bottom:1rem;">Problem statement of Photography is released. Check <a href="/event/photography">here.</a></li><ul>
+
                       </div>
                    </div>
                 </div>

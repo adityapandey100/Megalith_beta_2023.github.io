@@ -112,7 +112,8 @@
       url("ellora2.jpg");
   }
 }
-
+body {
+line-height: unset;}
 .bg-video-wrap {
   position: absolute;
   overflow: hidden;
@@ -127,7 +128,7 @@ video {
   height: 100%;
   z-index: 1;
   overflow: hidden;
-  filter: brightness(20%);
+  filter: brightness(33%);
 }
 #first-heading {
   text-align: center;
@@ -181,6 +182,8 @@ audio {
   top: 15%;
   width: 80%;
   left: 10%;
+letter-spacing:1px;
+word-spacing:7px;
   /* left: 30%;
   right: 30%; */
   font-family: "MedievalSharp", cursive;

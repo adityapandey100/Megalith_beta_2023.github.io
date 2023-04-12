@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
-/* font-family: 'MedievalSharp', cursive; */
+*{font-family: 'MedievalSharp', cursive; }
 html,
 body {
     margin: 0;
@@ -16,6 +16,13 @@ body {
     background-position: center;
     overflow: hidden;
 }
+#backgroundvideo{
+  position: fixed;
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+}
+
 nav{
   top: 0%;
 }
@@ -28,12 +35,6 @@ nav{
   right: 0;
 }
 
-#backgroundvideo{
-  position: fixed;
-  min-width: 100%;
-  min-height: 100%;
-  background-size: cover;
-}
 /*----------bootstrap-navbar-css------------*/
 .navbar-logo {
   color: #fff;

@@ -390,7 +390,21 @@ input[type=text] {
     color: #fff;
     font-weight: bold;
 }
-
+input[type=number] {
+  width: 22vw;
+  text-align: center;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #fff;
+  font-family: 'PLay', sans-serif;
+  font-size: 1.2vw;
+  font-weight: 200px;
+  padding: 10px 0;
+  transition: border 0.5s;
+  outline: none;
+  color: #fff;
+  font-weight: bold;
+}
 input[type=password] {
     width: 22vw;
     text-align: center;
@@ -544,6 +558,10 @@ button.ghost {
       font-size: 3.4vw;
     }
     input[type=text]{
+      width: 47vw;
+      font-size: 3.4vw;
+    }
+    input[type=number]{
       width: 47vw;
       font-size: 3.4vw;
     }

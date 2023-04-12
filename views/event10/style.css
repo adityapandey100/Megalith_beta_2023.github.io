@@ -7,6 +7,9 @@
     outline: none;
     border: none;
     text-decoration: none;
+font-family: 'roboto', sans-serif !important;
+text-align:justify !important;
+
   }
   html {
   scroll-behavior: smooth;
@@ -22,6 +25,7 @@
   .container .section{
     position:sticky;
     top:0;
+ background-size: cover !important;
     width:100%;
     
   }

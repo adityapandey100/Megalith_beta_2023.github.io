@@ -54,6 +54,7 @@ figure {
 
 figure img {
   position: relative;
+object-fit:cover;
   display: block;
   min-height: 100%;
   max-width: 100%;
@@ -137,6 +138,7 @@ figure.effect-sarah img {
 
 figure.effect-sarah:hover img {
   opacity: 0.4;
+filter:brightness(0.4);
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
