@@ -121,12 +121,12 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .spn-2023{
-  display: none;
+  /* display: none; */
   margin-top: 10rem;
 }
 
 .spn-2022{
-  /* display: none; */
+  display: none;
   margin-top: 10rem;
 }
 

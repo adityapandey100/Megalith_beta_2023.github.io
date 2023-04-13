@@ -7,9 +7,9 @@
   <meta name="description" content="Megalith 2023 | The Annual Tech-fest of Civil Engineering Department | IIT Kharagpur">
   <meta content="Megalith 2023, Megalith, Megalith IIT Kharagpur, Megalith 2023 IIT Kharagpur, Megalith IIT Kharagpur 2023" name="keywords">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="shortcut icon" href="l.png" />
-  <link rel="icon" href="l.png">
-    <link rel="stylesheet" href="wsstyle.css" />
+  <link rel="shortcut icon" href="../home/l.png" />
+  <link rel="icon" href="../home/l.png">
+    <link rel="stylesheet" href="../workshop/wsstyle.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
@@ -51,7 +51,7 @@
     <nav class="navbar navbar-expand-custom navbar-mainbg" style="padding: 0%;">
       <a class="navbar-brand navbar-logo" href="#">
         <!-- <img style="width: 12%; padding: 0%;" src="./src/images/logo52.png" alt="logo"> -->
-        <img style="    width: 27%; padding: 0%; margin-left: -20px; margin-top: -7px;" src="l.png" alt="logo" />
+        <img style="    width: 27%; padding: 0%; margin-left: -20px; margin-top: -7px;" src="../home/l.png" alt="logo" />
       </a>
 
       <button
@@ -64,45 +64,61 @@
         <i class="fas fa-bars text-white"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto ">
+          <!-- nav nav-tabs add this in the above classes of ul -->
           <div class="hori-selector">
             <div class="left"></div>
             <div class="right"></div>
           </div>
-          <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+          <li class="nav-item ">
+            <a class="nav-link"  href="./home.html">Home</a
+            >
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="./event.html" target="_blank"
+              >Events</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/event">Events</a>
+            <a class="nav-link activeupdated" href="./workshop.html" target="_blank"
+              >Workshop</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link activeupdated" href="/workshop">Workshop</a>
+            <a class="nav-link" href="./sponsors.html" target="_blank"
+              >Sponsors</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/sponsors">Sponsors</a>
+            <a class="nav-link" href="./team.html" target="_blank"
+              >Team</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/team">Team</a>
+            <a class="nav-link" href="./theme.html" target="_blank"
+              >Theme</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/theme">Theme</a>
+            <a class="nav-link"  href="./login.html" target="_blank"
+              >Register</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/signup">Register</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/contactus">Contact Us</a>
+            <a class="nav-link" href="../allhtml/contactus.html" target="_blank"
+              >Contact Us</a
+            >
           </li>
         </ul>
       </div>
     </nav>
     <video autoplay muted loop id="myVideo">
-      <source src="Qutub.mp4" type="video/mp4" />
+      <source src="../video/qutub/Qutub.mp4" type="video/mp4" />
     </video>
     <div class="wrapper">
       <div class="card" onclick="window.location.href='/commingsoon'">
         <div class="content">Coming Soon</div>
-        <img src="tnbr4.jpg" />
+        <img src="../workshop/tnbr4.jpg" />
         <span
           class="char2"
           style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0)"
@@ -116,12 +132,12 @@
 
       <div class="card" onclick="window.location.href='/commingsoon'">
         <div class="content">Coming Soon</div>
-        <img src="tnjal2.jpg" />
+        <img src="../workshop/tnjal2.jpg" />
         <div class="descriptions">
-          <h2>How to Register ?</h2>
+          <h2></h2>
         </div>
       </div>
     </div>
-    <script src="ws.js"></script>
+    <script src="../workshop/ws.js"></script>
   </body>
 </html>

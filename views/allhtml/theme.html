@@ -7,8 +7,8 @@
   <meta name="description" content="Megalith 2023 | The Annual Tech-fest of Civil Engineering Department | IIT Kharagpur">
   <meta content="Megalith 2023, Megalith, Megalith IIT Kharagpur, Megalith 2023 IIT Kharagpur, Megalith IIT Kharagpur 2023" name="keywords">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="shortcut icon" href="l.png" />
-  <link rel="icon" href="l.png">
+  <link rel="shortcut icon" href="../home/l.png" />
+  <link rel="icon" href="../home/l.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link
       rel="stylesheet"
@@ -23,8 +23,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css"
     />
 
-    <link rel="stylesheet" href="navbar.css" />
-    <link rel="stylesheet" href="theme.css" />
+    <link rel="stylesheet" href="../theme/theme.css" />
+    <link rel="stylesheet" href="../theme/navbar.css" />
 <style>
       .activeupdated{
         background-color: white;
@@ -48,7 +48,7 @@
       <!-- <img class="toplef-image" src="rangoli.png" alt="rangoli" /> -->
       <nav class="navbar navbar-expand-custom navbar-mainbg">
         <a class="navbar-brand navbar-logo" href="/"
-          ><img style="width: 44%; padding: 0%; margin-left: -111px;" src="l.png" alt="logo"
+          ><img style="width: 44%; padding: 0%; margin-left: -111px;" src="../home/l.png" alt="logo"
         /></a>
         <button
           class="navbar-toggler"
@@ -60,34 +60,50 @@
           <i class="fas fa-bars text-white"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto">
+          <ul class="navbar-nav ml-auto ">
+            <!-- nav nav-tabs add this in the above classes of ul -->
             <div class="hori-selector">
               <div class="left"></div>
               <div class="right"></div>
             </div>
-            <li class="nav-item">
-              <a class="nav-link" href="/">Home</a>
+            <li class="nav-item ">
+              <a class="nav-link"  href="./home.html">Home</a
+              >
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="./event.html"
+                >Events</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/event">Events</a>
+              <a class="nav-link" href="./workshop.html"
+                >Workshop</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/workshop">Workshop</a>
+              <a class="nav-link" href="./sponsors.html"
+                >Sponsors</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/sponsors">Sponsors</a>
+              <a class="nav-link" href="./team.html" 
+                >Team</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/team">Team</a>
+              <a class="nav-link activeupdated" href="./theme.html"
+                >Theme</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link activeupdated" href="/theme">Theme</a>
+              <a class="nav-link"  href="./login.html" 
+                >Register</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/signup">Register</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/contactus">Contact Us</a>
+              <a class="nav-link" href="./contactus.html"
+                >Contact Us</a
+              >
             </li>
           </ul>
         </div>
@@ -96,7 +112,7 @@
 
     <div class="bg-video">
       <video autoplay muted id="myVideo">
-        <source src="Konark.mp4" type="video/mp4" />
+        <source src="../video/konark/Konark.mp4" type="video/mp4" />
       </video>
 
       <div class="container">
@@ -141,6 +157,6 @@
     </div>
     
     <!-- <img class="toprit-image" src="rangoli.png" alt="rangoli" /> -->
-    <script src="theme.js"></script>
+    <script src="../theme/theme.js"></script>
   </body>
 </html>

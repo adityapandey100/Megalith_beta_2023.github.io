@@ -7,12 +7,11 @@
   <meta name="description" content="Megalith 2023 | The Annual Tech-fest of Civil Engineering Department | IIT Kharagpur">
   <meta content="Megalith 2023, Megalith, Megalith IIT Kharagpur, Megalith 2023 IIT Kharagpur, Megalith IIT Kharagpur 2023" name="keywords">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="shortcut icon" href="l.png" />
-  <link rel="icon" href="l.png">
-    <link rel="stylesheet"  href="register.css">
-    <link rel="stylesheet" href="buttons.css">
-    <link rel="stylesheet" href="footer.css">
-    <link rel="stylesheet" href="contactus.css">
+  <link rel="shortcut icon" href="../contactus/l.png" />
+  <link rel="icon" href="../contactus/l.png">
+    <link rel="stylesheet" href="../contactus/contactus.js">
+    <link rel="stylesheet" href="../contactus/footer.css">
+    <link rel="stylesheet" href="../contactus/buttons.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -54,40 +53,56 @@
  
   <nav style="position: absolute; padding-left: 0px; margin-bottom: 3%;" class="navbar navbar-expand-custom navbar-mainbg">
     <a class="navbar-brand navbar-logo" href="/">
-      <img style=" width: 24%; padding: 0%; margin-left: -1px; margin-top: -10px;" src="l.png" alt="logo" />
+      <img style=" width: 24%; padding: 0%; margin-left: -1px; margin-top: -10px;" src="../contactus/l.png" alt="logo" />
     </a>
     <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <i class="fas fa-bars text-white"></i>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent" >
-      <ul class="navbar-nav ml-auto">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto ">
+        <!-- nav nav-tabs add this in the above classes of ul -->
         <div class="hori-selector">
           <div class="left"></div>
           <div class="right"></div>
         </div>
-        <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
+        <li class="nav-item ">
+          <a class="nav-link"  href="./home.html">Home</a
+          >
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="/event">Events</a>
+          <a class="nav-link" href="./event.html"
+            >Events</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/workshop">Workshop</a>
+          <a class="nav-link" href="./workshop.html"
+            >Workshop</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/sponsors">Sponsors</a>
+          <a class="nav-link" href="./sponsors.html"
+            >Sponsors</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/team">Team</a>
+          <a class="nav-link" href="./team.html" 
+            >Team</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/theme">Theme</a>
+          <a class="nav-link" href="./theme.html"
+            >Theme</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/signup">Register</a>
+          <a class="nav-link"  href="./login.html" 
+            >Register</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link activeupdated" href="/contactus">Contact Us</a>
+          <a class="nav-link activeupdated" href="./contactus.html"
+            >Contact Us</a
+          >
         </li>
       </ul>
     </div>
@@ -103,17 +118,17 @@
             <form class="contactus" action="/contactus" method="POST">
               <h1>Let Us know, What's in your Head.</h1>
               <div class="item name_email">
-                <input class="emailtext" type="text" name="sendername" placeholder="Your name" required>
-                <input class="emailtext" type="email" name="senderemail" placeholder="Email" required>
+                <input class="emailtext" type="text" name="sendername" placeholder="Your name" required disabled>
+                <input class="emailtext" type="email" name="senderemail" placeholder="Email" required disabled>
               </div>
               <div class="item">
-                <input class="emailtext" type="text" name="sendersubject" placeholder="Subject" required>
+                <input class="emailtext" type="text" name="sendersubject" placeholder="Subject" required disabled>
               </div>
               <div class="item">
-                <textarea class="emailtext" name="sendermessage" placeholder="Message" required></textarea>
+                <textarea class="emailtext" name="sendermessage" placeholder="Message" required disabled></textarea>
               </div>
               <div class="contactusbtn">
-		<button class="regbtn regbtn__new" onclick="queryfunction()" type="submit">Send</button>
+		9<button class="regbtn regbtn__new">Send</button>
               </div>
             </form>
             
@@ -151,22 +166,8 @@
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
-    <script src="contactus.js"></script>
+    <script src="../contactus/contactus.js"></script>
 </body>
 
 </html>
 
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
-    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
-    <script src="contactus.js"></script>
-    <script>
-	function queryfunction(){
-		alert("Thank you for connecting with us, we have received your query.\nWe shall revert back to you soon.");
-		}
-	</script>
-</body>
-
-</html>
